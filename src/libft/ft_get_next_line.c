@@ -6,7 +6,7 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 17:24:51 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/11 18:10:02 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/11 18:22:03 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*read_file(int fd, char *remember);
 char	*find_current_line_from(char *remember);
 char	*find_next_line_from(char *remember);
-char	*append_remember(char *remember, char *buffer);
+void	*failure(char *remember, char *buffer);
 
 char	*ft_get_next_line(int fd)
 {
@@ -29,17 +29,16 @@ char	*ft_get_next_line(int fd)
 		return (NULL);
 	line = find_current_line_from(remember);
 	remember = find_next_line_from(remember);
+	return (line);
 }
 
-char	*append_remember(char *remember, char *buffer)
+void	*failure(char *remember, char *buffer)
 {
-	char	*new_remember;
-
-	new_remember = ft_strjoin(remember, buffer);
-	if (!new_remember)
-		return (NULL);
-	free(remember);
-	return (new_remember);
+	if (remember)
+		free(remember);
+	if (buffer)
+		free(buffer);
+	return (NULL);
 }
 
 char	*read_file(int fd, char *remember)
@@ -53,15 +52,16 @@ char	*read_file(int fd, char *remember)
 	{
 		n_read_byte = read(fd, buffer, BUFFER_SIZE);
 		if (n_read_byte == -1)
-		{
-			free(buffer);
-			return (NULL);
-		}
+			return (failure(remember, buffer));
 		buffer[n_read_byte] = 0;
-		remember = append_remember(remember, buffer);
+		remember = ft_strjoin(remember, buffer);
+		if (!remember)
+			return (failure(remember, buffer));
 		if (ft_strchr(buffer, '\n'))
 			break ;
 	}
+	free(buffer);
+	return (remember);
 }
 
 char	*find_current_line_from(char *remember)
@@ -72,10 +72,12 @@ char	*find_current_line_from(char *remember)
 	i = 0;
 	if (!remember[i])
 		return (NULL);
-	while (remember[i] && remember != '\n')
+	while (remember[i] && remember[i] != '\n')
 		i++;
 	line = ft_calloc(i + 2, sizeof(char));
-	while (remember[i] && remember != '\n')
+	if (!line)
+		return (failure(remember, line));
+	while (remember[i] && remember[i] != '\n')
 	{
 		line[i] = remember[i];
 		i++;
@@ -95,10 +97,7 @@ char	*find_next_line_from(char *remember)
 	while (remember[i] && remember[i] != '\n')
 		i++;
 	if (!remember[i])
-	{
-		free(remember);
-		return (NULL);
-	}
+		return (failure(remember, line));
 	line = ft_calloc(sizeof(char), (ft_strlen(remember) - i + 1));
 	i++;
 	j = 0;
