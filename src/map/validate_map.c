@@ -6,11 +6,12 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 20:46:31 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/11 20:51:36 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/11 20:52:00 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
+#include "rules/map_rule.h"
 
 // マップのバリデーションルール
 // 1. 形が正方形である事。
@@ -22,4 +23,21 @@
 // 7. map.hに定義されていない文字が含まれていない事。
 int	validate_map(t_map *map)
 {
+	if (!map)
+		return (ERROR);
+	if (validate_map_rectangular(map) != OK)
+		return (ERROR);
+	if (validate_map_surrounded_by_walls(map) != OK)
+		return (ERROR);
+	if (validate_map_single_player(map) != OK)
+		return (ERROR);
+	if (validate_map_single_exit(map) != OK)
+		return (ERROR);
+	if (validate_map_collectibles_exist(map) != OK)
+		return (ERROR);
+	if (validate_map_valid_characters(map) != OK)
+		return (ERROR);
+	if (validate_map_clearable(map) != OK)
+		return (ERROR);
+	return (OK);
 }
