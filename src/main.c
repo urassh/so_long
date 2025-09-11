@@ -3,49 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: surayama <surayama@student.42.fr>          +#+  +:+       +#+        */
+/*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 13:34:00 by surayama          #+#    #+#             */
-/*   Updated: 2025/09/10 13:34:23 by surayama         ###   ########.fr       */
+/*   Updated: 2025/09/11 18:41:48 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include <stdio.h>
-#include <unistd.h>
 #include "libft.h"
+#include "map.h"
+#include <stdio.h>
 
 int	main(void)
 {
-	int		fd;
-	char	*line;
-	int		line_count;
+	t_map	*map;
+	int		i;
 
-	fd = open("assets/map/map", O_RDONLY);
-	if (fd == -1)
+	printf("Testing load_map function with assets/map/map:\n");
+	printf("===============================================\n");
+	
+	map = load_map("assets/map/map");
+	if (!map)
 	{
-		printf("Error: Could not open file 'assets/map/map'\n");
+		printf("Error: Failed to load map from 'assets/map/map'\n");
 		return (1);
 	}
-
-	printf("Testing ft_get_next_line with assets/map/map:\n");
-	printf("==========================================\n");
 	
-	line_count = 1;
-	while ((line = ft_get_next_line(fd)) != NULL)
+	printf("Map loaded successfully!\n");
+	printf("Width: %d\n", map->width);
+	printf("Height: %d\n", map->height);
+	printf("\nMap grid:\n");
+	printf("---------\n");
+	
+	i = 0;
+	while (i < map->height)
 	{
-		if (ft_strcmp(line, "\n") == 0)
-			continue;
-		printf("Line %d: %s", line_count, line);
-		if (line[ft_strlen(line) - 1] != '\n')
-			printf("\n");
-		free(line);
-		line_count++;
+		printf("Row %d: %s\n", i, map->grid[i]);
+		i++;
 	}
 	
-	printf("==========================================\n");
-	printf("Total lines read: %d\n", line_count - 1);
+	printf("===============================================\n");
+	printf("Map test completed successfully.\n");
 	
-	close(fd);
+	free_map(map);
 	return (0);
 }

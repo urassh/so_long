@@ -16,7 +16,10 @@ SRCS = $(SRC_DIR)/main.c \
 	   $(SRC_DIR)/libft/ft_strcmp.c \
 	   $(SRC_DIR)/libft/ft_strchr.c \
 	   $(SRC_DIR)/libft/ft_strjoin.c \
-	   $(SRC_DIR)/libft/ft_strlen.c
+	   $(SRC_DIR)/libft/ft_strlen.c \
+	   $(SRC_DIR)/map/load_map.c \
+	   $(SRC_DIR)/map/free_map.c \
+	   $(SRC_DIR)/map/init_map.c
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
