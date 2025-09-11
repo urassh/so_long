@@ -14,9 +14,19 @@
 
 void	free_map(t_map *map)
 {
+	int	i;
+
 	if (map == NULL)
 		return ;
 	if (map->grid != NULL)
-		map->grid = NULL;
+	{
+		i = 0;
+		while (i < map->height && map->grid[i] != NULL)
+		{
+			free(map->grid[i]);
+			i++;
+		}
+		free(map->grid);
+	}
 	free(map);
 }

@@ -6,13 +6,14 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:35:52 by surayama          #+#    #+#             */
-/*   Updated: 2025/09/11 17:21:54 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/11 18:42:14 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_H
 # define MAP_H
 
+# include <fcntl.h>
 # include <stdlib.h>
 # include <sys/types.h>
 
