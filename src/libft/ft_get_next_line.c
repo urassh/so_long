@@ -77,6 +77,7 @@ char	*find_current_line_from(char *remember)
 	line = ft_calloc(i + 2, sizeof(char));
 	if (!line)
 		return (failure(remember, line));
+	i = 0;
 	while (remember[i] && remember[i] != '\n')
 	{
 		line[i] = remember[i];
@@ -97,8 +98,13 @@ char	*find_next_line_from(char *remember)
 	while (remember[i] && remember[i] != '\n')
 		i++;
 	if (!remember[i])
-		return (failure(remember, line));
+	{
+		free(remember);
+		return (NULL);
+	}
 	line = ft_calloc(sizeof(char), (ft_strlen(remember) - i + 1));
+	if (!line)
+		return (failure(remember, NULL));
 	i++;
 	j = 0;
 	while (remember[i])

@@ -10,7 +10,13 @@ HEADERS =
 CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -I$(INCLUDES_DIR)
 
-SRCS = $(SRC_DIR)/main.c
+SRCS = $(SRC_DIR)/main.c \
+	   $(SRC_DIR)/libft/ft_get_next_line.c \
+	   $(SRC_DIR)/libft/ft_calloc.c \
+	   $(SRC_DIR)/libft/ft_strcmp.c \
+	   $(SRC_DIR)/libft/ft_strchr.c \
+	   $(SRC_DIR)/libft/ft_strjoin.c \
+	   $(SRC_DIR)/libft/ft_strlen.c
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
@@ -24,20 +30,23 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@echo "$(YELLOW)Linking $(NAME)...$(NC)"
 	@cc $(CFLAGS) $(OBJS) -o $(NAME)
-	@echo "$(GREEN) $(NAME) created successfully!$(NC)"
+	@echo "$(GREEN)$(NAME) created successfully!$(NC)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS) | $(OBJ_DIR)
 	@mkdir -p $(dir $@)
 	@echo "$(YELLOW)Compiling $<...$(NC)"
 	@cc $(CFLAGS) $(INCLUDES) -c $< -o $@
 
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
+
 %:
 	@:
 
 clean:
-	@if [ -d $(OBJDIR) ]; then \
+	@if [ -d $(OBJ_DIR) ]; then \
 		echo "$(RED)Removing object files...$(NC)"; \
-		rm -rf $(OBJDIR); \
+		rm -rf $(OBJ_DIR); \
 		echo "$(GREEN) Object files removed!$(NC)"; \
 	fi
 
@@ -52,4 +61,4 @@ re: fclean all
 
 .PHONY: all clean fclean re
 
-.PRECIOUS: $(OBJDIR)/%.o
+.PRECIOUS: $(OBJ_DIR)/%.o
