@@ -1,40 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.h                                              :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/10 15:35:52 by surayama          #+#    #+#             */
-/*   Updated: 2025/09/11 17:21:54 by urassh           ###   ########.fr       */
+/*   Created: 2025/09/11 17:34:54 by urassh            #+#    #+#             */
+/*   Updated: 2025/09/11 17:46:35 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_H
-# define MAP_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <sys/types.h>
-
-# define EMPTY "0"
-# define WALL "1"
-# define COLLECT "C"
-# define EXIT "E"
-# define PLAYER "P"
-
-# define OK 0
-# define ERROR 1
-
-typedef struct s_map
+char	*ft_strjoin(const char *s1, const char *s2)
 {
-	char	**grid;
-	int		width;
-	int		height;
-}			t_map;
+	int		length;
+	char	*joined;
+	int		i;
+	int		j;
 
-t_map		*init_map(void);
-t_map		*load_map(const char *path);
-int			validate_map(t_map *map);
-void		free_map(t_map *map);
-
-#endif
+	length = ft_strlen(s1) + ft_strlen(s2);
+	joined = ft_calloc(length + 1, sizeof(char));
+	i = 0;
+	while (s1[i])
+	{
+		joined[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j])
+	{
+		joined[i] = s2[j];
+		i++;
+		j++;
+	}
+	return (joined);
+}

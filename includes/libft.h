@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.h                                              :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/10 15:35:52 by surayama          #+#    #+#             */
-/*   Updated: 2025/09/11 17:21:54 by urassh           ###   ########.fr       */
+/*   Created: 2025/09/11 17:23:22 by urassh            #+#    #+#             */
+/*   Updated: 2025/09/11 17:57:41 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_H
-# define MAP_H
+#ifndef LIBFT_H
+# define LIBFT_H
 
 # include <stdlib.h>
 # include <sys/types.h>
 
-# define EMPTY "0"
-# define WALL "1"
-# define COLLECT "C"
-# define EXIT "E"
-# define PLAYER "P"
+# define BUFFER_SIZE 1024
 
-# define OK 0
-# define ERROR 1
-
-typedef struct s_map
-{
-	char	**grid;
-	int		width;
-	int		height;
-}			t_map;
-
-t_map		*init_map(void);
-t_map		*load_map(const char *path);
-int			validate_map(t_map *map);
-void		free_map(t_map *map);
+int		ft_strlen(const char *str);
+void	*ft_calloc(size_t nmemb, size_t size);
+char	*ft_strchr(const char *string, int searched_char);
+char	*ft_strjoin(const char *s1, const char *s2);
+char	*ft_get_next_line(int fd);
 
 #endif
