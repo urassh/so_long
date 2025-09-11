@@ -44,6 +44,7 @@ void	*failure(char *remember, char *buffer)
 char	*read_file(int fd, char *remember)
 {
 	char	*buffer;
+	char	*temp;
 	int		n_read_byte;
 
 	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
@@ -54,9 +55,11 @@ char	*read_file(int fd, char *remember)
 		if (n_read_byte == -1)
 			return (failure(remember, buffer));
 		buffer[n_read_byte] = 0;
-		remember = ft_strjoin(remember, buffer);
-		if (!remember)
+		temp = ft_strjoin(remember, buffer);
+		if (!temp)
 			return (failure(remember, buffer));
+		free(remember);
+		remember = temp;
 		if (ft_strchr(buffer, '\n'))
 			break ;
 	}
@@ -102,7 +105,7 @@ char	*find_next_line_from(char *remember)
 		free(remember);
 		return (NULL);
 	}
-	line = ft_calloc(sizeof(char), (ft_strlen(remember) - i + 1));
+	line = ft_calloc(ft_strlen(remember) - i + 1, sizeof(char));
 	if (!line)
 		return (failure(remember, NULL));
 	i++;
