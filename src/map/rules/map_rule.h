@@ -13,7 +13,7 @@
 #ifndef MAP_RULE_H
 # define MAP_RULE_H
 
-# include "../../includes/map.h"
+# include "../../../includes/map.h"
 
 // バリデーションルール関数の宣言
 

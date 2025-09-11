@@ -20,7 +20,14 @@ SRCS = $(SRC_DIR)/main.c \
 	   $(SRC_DIR)/map/load_map.c \
 	   $(SRC_DIR)/map/free_map.c \
 	   $(SRC_DIR)/map/init_map.c \
-	   $(SRC_DIR)/map/validate_map.c
+	   $(SRC_DIR)/map/validate_map.c \
+	   $(SRC_DIR)/map/rules/validate_rectangular.c \
+	   $(SRC_DIR)/map/rules/validate_surrounded_by_walls.c \
+	   $(SRC_DIR)/map/rules/validate_single_player.c \
+	   $(SRC_DIR)/map/rules/validate_single_exit.c \
+	   $(SRC_DIR)/map/rules/validate_collectibles_exist.c \
+	   $(SRC_DIR)/map/rules/validate_clearable.c \
+	   $(SRC_DIR)/map/rules/validate_valid_characters.c
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
