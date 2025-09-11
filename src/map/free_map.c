@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   free_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/10 15:50:38 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/10 15:50:40 by urassh           ###   ########.fr       */
+/*   Created: 2025/09/11 17:15:54 by urassh            #+#    #+#             */
+/*   Updated: 2025/09/11 17:18:41 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "map.h"
 
-# include "map.h"
-
-#endif
+void	free_map(t_map *map)
+{
+	if (map == NULL)
+		return ;
+	if (map->grid != NULL)
+		map->grid = NULL;
+	free(map);
+}
