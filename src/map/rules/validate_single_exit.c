@@ -15,17 +15,17 @@
 int	validate_map_single_exit(t_map *map)
 {
 	int	i;
-	int	player_count;
+	int	exit_count;
 
 	i = 0;
-	player_count = 0;
+	exit_count = 0;
 	while (i < map->height)
 	{
 		if (ft_strchr(map->grid[i], EXIT) != NULL)
-			player_count += 1;
+			exit_count += 1;
 		i++;
 	}
-	if (player_count == 1)
+	if (exit_count == 1)
 		return (OK);
 	return (ERROR);
 }

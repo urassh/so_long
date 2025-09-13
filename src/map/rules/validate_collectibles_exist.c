@@ -12,11 +12,20 @@
 
 #include "map_rule.h"
 
-// 5. Collectibleの数が1以上である事
-// マップ内にコレクタブル（'C'）が1つ以上存在することを確認
 int	validate_map_collectibles_exist(t_map *map)
 {
-	// 実装は後で行う
-	(void)map;
-	return (OK);
+	int	i;
+	int	collectible_count;
+
+	i = 0;
+	collectible_count = 0;
+	while (i < map->height)
+	{
+		if (ft_strchr(map->grid[i], COLLECT) != NULL)
+			collectible_count += 1;
+		i++;
+	}
+	if (collectible_count >= 1)
+		return (OK);
+	return (ERROR);
 }
