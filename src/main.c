@@ -14,37 +14,51 @@
 #include "map.h"
 #include <stdio.h>
 
-int	main(void)
+void	test_map_validation(const char *map_path, const char *test_name)
 {
 	t_map	*map;
-	int		i;
+	int		result;
 
-	printf("Testing load_map function with assets/map/map:\n");
-	printf("===============================================\n");
+	printf("Testing: %s\n", test_name);
+	printf("Map file: %s\n", map_path);
 	
-	map = load_map("assets/map/map");
+	map = load_map(map_path);
 	if (!map)
 	{
-		printf("Error: Failed to load map from 'assets/map/map'\n");
-		return (1);
+		printf("Result: FAILED (Could not load map)\n");
+		printf("----------------------------------------\n\n");
+		return;
 	}
 	
-	printf("Map loaded successfully!\n");
-	printf("Width: %d\n", map->width);
-	printf("Height: %d\n", map->height);
-	printf("\nMap grid:\n");
-	printf("---------\n");
-	
-	i = 0;
-	while (i < map->height)
-	{
-		printf("Row %d: %s\n", i, map->grid[i]);
-		i++;
-	}
-	
-	printf("===============================================\n");
-	printf("Map test completed successfully.\n");
+	result = validate_map(map);
+	if (result == OK)
+		printf("Result: VALID\n");
+	else
+		printf("Result: INVALID\n");
 	
 	free_map(map);
+	printf("----------------------------------------\n\n");
+}
+
+int	main(void)
+{
+	printf("=== SO_LONG MAP VALIDATION TESTS ===\n\n");
+	
+	// 有効なマップのテスト
+	test_map_validation("assets/map/test_valid", "Valid Map Test");
+	
+	// 無効なマップのテスト
+	test_map_validation("assets/map/test_multiple_players", "Multiple Players Test (should be INVALID)");
+	test_map_validation("assets/map/test_multiple_exits", "Multiple Exits Test (should be INVALID)");
+	test_map_validation("assets/map/test_no_collectibles", "No Collectibles Test (should be INVALID)");
+	test_map_validation("assets/map/test_not_surrounded", "Not Surrounded by Walls Test (should be INVALID)");
+	test_map_validation("assets/map/test_not_rectangular", "Not Rectangular Test (should be INVALID)");
+	test_map_validation("assets/map/test_invalid_character", "Invalid Character Test (should be INVALID)");
+	test_map_validation("assets/map/test_not_clearable", "Not Clearable Test (should be INVALID)");
+	
+	// 元のマップも追加でテスト
+	test_map_validation("assets/map/map", "Original Map Test");
+	
+	printf("=== ALL TESTS COMPLETED ===\n");
 	return (0);
 }

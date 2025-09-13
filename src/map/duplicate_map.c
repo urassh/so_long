@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "map.h"
+#include "libft.h"
 
 static void	insert_grid(t_map *to_map, t_map *from_map);
 

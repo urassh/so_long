@@ -14,6 +14,7 @@
 # define MAP_RULE_H
 
 # include "../../../includes/map.h"
+# include "../../../includes/libft.h"
 
 // バリデーションルール関数の宣言
 

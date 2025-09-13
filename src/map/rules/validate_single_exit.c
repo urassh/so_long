@@ -15,14 +15,20 @@
 int	validate_map_single_exit(t_map *map)
 {
 	int	i;
+	int	j;
 	int	exit_count;
 
 	i = 0;
 	exit_count = 0;
 	while (i < map->height)
 	{
-		if (ft_strchr(map->grid[i], EXIT) != NULL)
-			exit_count += 1;
+		j = 0;
+		while (map->grid[i][j])
+		{
+			if (map->grid[i][j] == EXIT)
+				exit_count++;
+			j++;
+		}
 		i++;
 	}
 	if (exit_count == 1)

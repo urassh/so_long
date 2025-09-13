@@ -17,22 +17,21 @@
 int	validate_map_valid_characters(t_map *map)
 {
 	int	i;
+	int	j;
 
 	i = 0;
 	while (i < map->height)
 	{
-		if (ft_strchr(map->grid[i], EMPTY) != NULL)
-			i++;
-		else if (ft_strchr(map->grid[i], WALL) != NULL)
-			i++;
-		else if (ft_strchr(map->grid[i], COLLECT) != NULL)
-			i++;
-		else if (ft_strchr(map->grid[i], EXIT) != NULL)
-			i++;
-		else if (ft_strchr(map->grid[i], PLAYER) != NULL)
-			i++;
-		else
-			return (ERROR);
+		j = 0;
+		while (map->grid[i][j])
+		{
+			if (map->grid[i][j] != EMPTY && map->grid[i][j] != WALL
+				&& map->grid[i][j] != COLLECT && map->grid[i][j] != EXIT
+				&& map->grid[i][j] != PLAYER)
+				return (ERROR);
+			j++;
+		}
+		i++;
 	}
 	return (OK);
 }

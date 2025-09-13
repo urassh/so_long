@@ -15,14 +15,20 @@
 int	validate_map_single_player(t_map *map)
 {
 	int	i;
+	int	j;
 	int	player_count;
 
 	i = 0;
 	player_count = 0;
 	while (i < map->height)
 	{
-		if (ft_strchr(map->grid[i], PLAYER) != NULL)
-			player_count += 1;
+		j = 0;
+		while (map->grid[i][j])
+		{
+			if (map->grid[i][j] == PLAYER)
+				player_count++;
+			j++;
+		}
 		i++;
 	}
 	if (player_count == 1)
