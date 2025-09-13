@@ -12,11 +12,16 @@
 
 #include "map_rule.h"
 
-// 1. 形が正方形である事（矩形である事）
-// マップの各行の長さが統一されていることを確認
 int	validate_map_rectangular(t_map *map)
 {
-	// 実装は後で行う
-	(void)map;
+	int	i;
+
+	i = 0;
+	while (i < map->height)
+	{
+		if (ft_strlen(map->grid[i]) != map->width)
+			return (ERROR);
+		i++;
+	}
 	return (OK);
 }
