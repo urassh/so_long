@@ -1,6 +1,8 @@
 {
 	"files.associations": {
 		"libft.h": "c",
-		"fcntl.h": "c"
+		"fcntl.h": "c",
+		"__tree": "c",
+		"map": "c"
 	}
 }

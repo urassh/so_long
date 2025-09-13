@@ -6,7 +6,7 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:35:52 by surayama          #+#    #+#             */
-/*   Updated: 2025/09/13 09:20:23 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/13 10:50:51 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_map
 
 t_map		*init_map(void);
 t_map		*load_map(const char *path);
+t_map		*duplicate_map(t_map *map);
 int			validate_map(t_map *map);
 void		free_map(t_map *map);
 
