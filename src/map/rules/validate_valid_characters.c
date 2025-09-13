@@ -16,7 +16,23 @@
 // マップ内の全ての文字が有効（'0', '1', 'C', 'E', 'P'）であることを確認
 int	validate_map_valid_characters(t_map *map)
 {
-	// 実装は後で行う
-	(void)map;
+	int	i;
+
+	i = 0;
+	while (i < map->height)
+	{
+		if (ft_strchr(map->grid[i], EMPTY) != NULL)
+			i++;
+		else if (ft_strchr(map->grid[i], WALL) != NULL)
+			i++;
+		else if (ft_strchr(map->grid[i], COLLECT) != NULL)
+			i++;
+		else if (ft_strchr(map->grid[i], EXIT) != NULL)
+			i++;
+		else if (ft_strchr(map->grid[i], PLAYER) != NULL)
+			i++;
+		else
+			return (ERROR);
+	}
 	return (OK);
 }
