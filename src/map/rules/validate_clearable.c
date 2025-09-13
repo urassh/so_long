@@ -89,7 +89,8 @@ static int	check_collectibles_and_exit(t_map *original_map, t_map *filled_map)
 		x = 0;
 		while (x < original_map->width)
 		{
-			if (original_map->grid[y][x] == COLLECT || original_map->grid[y][x] == EXIT)
+			if (original_map->grid[y][x] == COLLECT
+				|| original_map->grid[y][x] == EXIT)
 				if (filled_map->grid[y][x] != 'F')
 					return (ERROR);
 			x++;
