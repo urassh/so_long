@@ -12,12 +12,89 @@
 
 #include "map_rule.h"
 
-// 6. 必ず、クリア可能である事
-// プレイヤーから全てのコレクタブルへの経路が存在することを確認
-// プレイヤーから出口への経路が存在することを確認
+static void	find_player_position(t_map *map, int *player_x, int *player_y);
+static void	flood_fill(t_map *map, int x, int y);
+static int	check_collectibles_and_exit(t_map *original_map, t_map *filled_map);
+
 int	validate_map_clearable(t_map *map)
 {
-	// 実装は後で行う
-	(void)map;
+	t_map	*duplicate;
+	int		player_x;
+	int		player_y;
+	int		result;
+
+	if (!map)
+		return (ERROR);
+	duplicate = duplicate_map(map);
+	if (!duplicate)
+		return (ERROR);
+	find_player_position(map, &player_x, &player_y);
+	if (player_x == -1 || player_y == -1)
+	{
+		free_map(duplicate);
+		return (ERROR);
+	}
+	flood_fill(duplicate, player_x, player_y);
+	result = check_collectibles_and_exit(map, duplicate);
+	free_map(duplicate);
+	return (result);
+}
+
+static void	find_player_position(t_map *map, int *player_x, int *player_y)
+{
+	int	x;
+	int	y;
+
+	*player_x = -1;
+	*player_y = -1;
+	y = 0;
+	while (y < map->height)
+	{
+		x = 0;
+		while (x < map->width)
+		{
+			if (map->grid[y][x] == PLAYER)
+			{
+				*player_x = x;
+				*player_y = y;
+				return ;
+			}
+			x++;
+		}
+		y++;
+	}
+}
+
+static void	flood_fill(t_map *map, int x, int y)
+{
+	if (x < 0 || x >= map->width || y < 0 || y >= map->height)
+		return ;
+	if (map->grid[y][x] == WALL || map->grid[y][x] == 'F')
+		return ;
+	map->grid[y][x] = 'F';
+	flood_fill(map, x + 1, y);
+	flood_fill(map, x - 1, y);
+	flood_fill(map, x, y + 1);
+	flood_fill(map, x, y - 1);
+}
+
+static int	check_collectibles_and_exit(t_map *original_map, t_map *filled_map)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < original_map->height)
+	{
+		x = 0;
+		while (x < original_map->width)
+		{
+			if (original_map->grid[y][x] == COLLECT || original_map->grid[y][x] == EXIT)
+				if (filled_map->grid[y][x] != 'F')
+					return (ERROR);
+			x++;
+		}
+		y++;
+	}
 	return (OK);
 }
