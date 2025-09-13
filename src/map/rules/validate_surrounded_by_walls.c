@@ -14,10 +14,6 @@
 
 static int	all_walls(const char *row);
 
-// 2. 壁で囲まれている事
-// マップの外周が全て壁（'1'）であることを確認
-// 最初と最後の文字列が全て'1'である。
-// 各文字列の最初と最後の文字列が'1'である。
 int	validate_map_surrounded_by_walls(t_map *map)
 {
 	int	i;
