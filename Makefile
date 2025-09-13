@@ -14,6 +14,7 @@ SRCS = $(SRC_DIR)/main.c \
 	   $(SRC_DIR)/libft/ft_get_next_line.c \
 	   $(SRC_DIR)/libft/ft_calloc.c \
 	   $(SRC_DIR)/libft/ft_strcmp.c \
+	   $(SRC_DIR)/libft/ft_strdup.c \
 	   $(SRC_DIR)/libft/ft_strchr.c \
 	   $(SRC_DIR)/libft/ft_strjoin.c \
 	   $(SRC_DIR)/libft/ft_strlen.c \
@@ -21,6 +22,7 @@ SRCS = $(SRC_DIR)/main.c \
 	   $(SRC_DIR)/map/free_map.c \
 	   $(SRC_DIR)/map/init_map.c \
 	   $(SRC_DIR)/map/validate_map.c \
+	   $(SRC_DIR)/map/duplicate_map.c \
 	   $(SRC_DIR)/map/rules/validate_rectangular.c \
 	   $(SRC_DIR)/map/rules/validate_surrounded_by_walls.c \
 	   $(SRC_DIR)/map/rules/validate_single_player.c \

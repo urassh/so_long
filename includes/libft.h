@@ -22,6 +22,7 @@
 int		ft_strlen(const char *str);
 void	*ft_calloc(size_t nmemb, size_t size);
 int		ft_strcmp(const char *a, const char *b);
+char	*ft_strdup(const char *s);
 char	*ft_strchr(const char *string, int searched_char);
 char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_get_next_line(int fd);
