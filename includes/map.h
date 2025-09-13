@@ -6,7 +6,7 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:35:52 by surayama          #+#    #+#             */
-/*   Updated: 2025/09/11 18:42:14 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/13 09:20:23 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 # include <stdlib.h>
 # include <sys/types.h>
 
-# define EMPTY "0"
-# define WALL "1"
-# define COLLECT "C"
-# define EXIT "E"
-# define PLAYER "P"
+# define EMPTY '0'
+# define WALL '1'
+# define COLLECT 'C'
+# define EXIT 'E'
+# define PLAYER 'P'
 
 # define OK 0
 # define ERROR 1

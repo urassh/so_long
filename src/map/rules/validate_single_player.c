@@ -21,7 +21,7 @@ int	validate_map_single_player(t_map *map)
 	player_count = 0;
 	while (i < map->height)
 	{
-		if (ft_strchr(map->grid[i], 'P') != NULL)
+		if (ft_strchr(map->grid[i], PLAYER) != NULL)
 			player_count += 1;
 		i++;
 	}

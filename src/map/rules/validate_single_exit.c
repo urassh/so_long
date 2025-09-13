@@ -12,11 +12,20 @@
 
 #include "map_rule.h"
 
-// 4. Exitの数が1である事
-// マップ内に出口（'E'）が正確に1つ存在することを確認
 int	validate_map_single_exit(t_map *map)
 {
-	// 実装は後で行う
-	(void)map;
-	return (OK);
+	int	i;
+	int	player_count;
+
+	i = 0;
+	player_count = 0;
+	while (i < map->height)
+	{
+		if (ft_strchr(map->grid[i], EXIT) != NULL)
+			player_count += 1;
+		i++;
+	}
+	if (player_count == 1)
+		return (OK);
+	return (ERROR);
 }
