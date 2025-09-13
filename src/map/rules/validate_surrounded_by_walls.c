@@ -12,11 +12,39 @@
 
 #include "map_rule.h"
 
+static int	all_walls(const char *row);
+
 // 2. 壁で囲まれている事
 // マップの外周が全て壁（'1'）であることを確認
+// 最初と最後の文字列が全て'1'である。
+// 各文字列の最初と最後の文字列が'1'である。
 int	validate_map_surrounded_by_walls(t_map *map)
 {
-	// 実装は後で行う
-	(void)map;
+	int	i;
+
+	if (map->grid[0] == NULL || map->grid[map->height - 1] == NULL)
+		return (ERROR);
+	if (ft_strcmp(map->grid[0], map->grid[map->height - 1]) != 0)
+		return (ERROR);
+	if (!all_walls(map->grid[0]) || !all_walls(map->grid[map->height - 1]))
+		return (ERROR);
+	i = 0;
+	while (i < map->height)
+	{
+		if (map->grid[i][0] != '1' || map->grid[i][map->width - 1] != '1')
+			return (ERROR);
+		i++;
+	}
 	return (OK);
+}
+
+static int	all_walls(const char *row)
+{
+	while (*row)
+	{
+		if (*row != '1')
+			return (0);
+		row++;
+	}
+	return (1);
 }
