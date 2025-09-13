@@ -12,11 +12,20 @@
 
 #include "map_rule.h"
 
-// 3. Playerの数は1である事
-// マップ内にプレイヤー（'P'）が正確に1つ存在することを確認
 int	validate_map_single_player(t_map *map)
 {
-	// 実装は後で行う
-	(void)map;
-	return (OK);
+	int	i;
+	int	player_count;
+
+	i = 0;
+	player_count = 0;
+	while (i < map->height)
+	{
+		if (ft_strchr(map->grid[i], 'P') != NULL)
+			player_count += 1;
+		i++;
+	}
+	if (player_count == 1)
+		return (OK);
+	return (ERROR);
 }
