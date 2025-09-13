@@ -6,13 +6,14 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 17:23:22 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/11 18:34:01 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/13 16:05:35 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <stdint.h>
 # include <stdlib.h>
 # include <sys/types.h>
 # include <unistd.h>
