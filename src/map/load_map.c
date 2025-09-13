@@ -63,6 +63,7 @@ static int	get_map_line_count(const char *path)
 		line = ft_get_next_line(fd);
 	}
 	close(fd);
+	ft_get_next_line(-1);
 	return (line_count);
 }
 
@@ -82,6 +83,7 @@ static char	**allocate_and_load_grid(const char *path, int line_count)
 	}
 	grid = load_grid(fd, grid, line_count);
 	close(fd);
+	ft_get_next_line(-1);
 	return (grid);
 }
 

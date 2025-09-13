@@ -22,7 +22,16 @@ char	*ft_get_next_line(int fd)
 	static char	*remember;
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
+	{
+		if (remember)
+		{
+			free(remember);
+			remember = NULL;
+		}
+		return (NULL);
+	}
+	if (read(fd, 0, 0) < 0)
 		return (NULL);
 	remember = read_file(fd, remember);
 	if (!remember)
