@@ -42,11 +42,11 @@ static void	insert_grid(t_map *to_map, t_map *from_map)
 	i = 0;
 	while (i < to_map->height)
 	{
-		to_map->grid[i] = ft_strdup(to_map->grid[i]);
+		to_map->grid[i] = ft_strdup(from_map->grid[i]);
 		if (!to_map->grid[i])
 		{
 			free_map(to_map);
-			return (NULL);
+			return ;
 		}
 		i++;
 	}
