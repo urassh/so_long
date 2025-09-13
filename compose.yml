@@ -1,0 +1,12 @@
+services:
+  so_long:
+    build: .
+    volumes:
+      - .:/cursus
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    working_dir: /cursus
+    environment:
+      - DISPLAY=${DISPLAY}
+    network_mode: host
+    tty: true
+    stdin_open: true
