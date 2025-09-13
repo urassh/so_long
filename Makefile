@@ -4,11 +4,24 @@ ASSETS_DIR = assets
 INCLUDES_DIR = includes
 SRC_DIR = src
 OBJ_DIR = obj
+MLX_DIR = minilibx-linux
 
 HEADERS = 
 
 CFLAGS = -Wall -Wextra -Werror
-INCLUDES = -I$(INCLUDES_DIR)
+INCLUDES = -I$(INCLUDES_DIR) -I$(MLX_DIR)
+# macOS用のフラグ
+LIBFLAGS_MACOS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+# Linux用のフラグ
+LIBFLAGS_LINUX = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lz
+
+# OSを検出
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Darwin)
+	LIBFLAGS = $(LIBFLAGS_MACOS)
+else
+	LIBFLAGS = $(LIBFLAGS_LINUX)
+endif
 
 SRCS = $(SRC_DIR)/main.c \
 	   $(SRC_DIR)/libft/ft_get_next_line.c \
@@ -40,9 +53,14 @@ NC = \033[0m
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(MLX_DIR)/libmlx.a:
+	@echo "$(YELLOW)Building minilibx...$(NC)"
+	@$(MAKE) -C $(MLX_DIR)
+	@echo "$(GREEN)Minilibx built successfully!$(NC)"
+
+$(NAME): $(MLX_DIR)/libmlx.a $(OBJS)
 	@echo "$(YELLOW)Linking $(NAME)...$(NC)"
-	@cc $(CFLAGS) $(OBJS) -o $(NAME)
+	@cc $(CFLAGS) $(OBJS) $(LIBFLAGS) -o $(NAME)
 	@echo "$(GREEN)$(NAME) created successfully!$(NC)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS) | $(OBJ_DIR)
@@ -62,6 +80,9 @@ clean:
 		rm -rf $(OBJ_DIR); \
 		echo "$(GREEN) Object files removed!$(NC)"; \
 	fi
+	@echo "$(YELLOW)Cleaning minilibx...$(NC)"
+	@$(MAKE) -C $(MLX_DIR) clean
+	@echo "$(GREEN)Minilibx cleaned!$(NC)"
 
 fclean: clean
 	@if [ -f $(NAME) ]; then \
