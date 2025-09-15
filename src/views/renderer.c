@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "renderer.h"
+#include "game_state.h"
 #include <stdlib.h>
 
 t_renderer	*init_renderer(t_mlx_context *mlx)
@@ -41,6 +42,6 @@ void	free_renderer(t_renderer *renderer)
 
 void render_game(t_game_state *game) {
     clear_screen(game->renderer);
-    render_map(game->map, game->renderer);
+    render_map(game->renderer, game->map);
     present_screen(game->renderer);
 }

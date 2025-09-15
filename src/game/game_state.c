@@ -55,7 +55,7 @@ int	load_game_map(t_game_state *game, const char *map_path)
 	game->map = load_map(map_path);
 	if (!game->map)
 		return (1);
-	if (validate_map(game->map) != 0)
+	if (validate_map(game->map) == ERROR)
 	{
 		free_map(game->map);
 		game->map = NULL;

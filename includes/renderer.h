@@ -17,6 +17,7 @@
 # include "constants.h"
 
 struct s_map;
+struct s_game_state;
 
 typedef struct s_mlx_context
 {
@@ -57,7 +58,7 @@ void		present_screen(t_renderer *renderer);
 void		render_tile(t_renderer *r, char tile, int x, int y);
 void		draw_texture_at(t_renderer *r, t_texture *tex, t_vector2d pos);
 void		render_map(t_renderer *renderer, struct s_map *map);
-void		render_game(t_game_state *game);
+void		render_game(struct s_game_state *game);
 
 t_texture	*init_texture(void);
 t_texture	*load_texture_from_file(void *mlx_ptr, const char *file_path);
