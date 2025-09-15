@@ -31,7 +31,9 @@ SRCS = $(SRC_DIR)/main.c \
 	   $(SRC_DIR)/libft/ft_strchr.c \
 	   $(SRC_DIR)/libft/ft_strjoin.c \
 	   $(SRC_DIR)/libft/ft_strlen.c \
+	   $(SRC_DIR)/utils/vector2d.c \
 	   $(SRC_DIR)/models/player_model.c \
+	   $(SRC_DIR)/models/collectible_model.c \
 	   $(SRC_DIR)/models/map/map_model.c \
 	   $(SRC_DIR)/models/map/map_loader.c \
 	   $(SRC_DIR)/models/map/map_validator.c \
@@ -41,7 +43,10 @@ SRCS = $(SRC_DIR)/main.c \
 	   $(SRC_DIR)/models/map/validation/validate_single_exit.c \
 	   $(SRC_DIR)/models/map/validation/validate_collectibles_exist.c \
 	   $(SRC_DIR)/models/map/validation/validate_clearable.c \
-	   $(SRC_DIR)/models/map/validation/validate_valid_characters.c
+	   $(SRC_DIR)/models/map/validation/validate_valid_characters.c \
+	   $(SRC_DIR)/views/renderer.c \
+	   $(SRC_DIR)/game/game_state.c \
+	   $(SRC_DIR)/game/game_state_utils.c
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 

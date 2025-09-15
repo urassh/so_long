@@ -278,9 +278,16 @@ void render_game(t_game_state *game) {
 ```c
 // メインゲームループ
 void game_loop(t_game_state *game) {
-    static clock_t last_time = 0;
-    clock_t current_time = clock();
-    float delta_time = (float)(current_time - last_time) / CLOCKS_PER_SEC;
+    static struct timeval last_time = {0, 0};
+    struct timeval current_time;
+    float delta_time;
+    
+    gettimeofday(&current_time, NULL);
+    if (last_time.tv_sec == 0) {
+        last_time = current_time;
+    }
+    delta_time = (current_time.tv_sec - last_time.tv_sec) 
+                + (current_time.tv_usec - last_time.tv_usec) / 1000000.0f;
     
     // 1. 入力処理 (MLXイベントから)
     process_pending_events(game);

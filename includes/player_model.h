@@ -14,12 +14,7 @@
 # define PLAYER_MODEL_H
 
 # include <stdbool.h>
-
-typedef struct s_vector2d
-{
-	int				x;
-	int				y;
-}					t_vector2d;
+# include "vector2d.h"
 
 typedef enum e_direction
 {
