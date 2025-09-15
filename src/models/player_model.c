@@ -45,12 +45,6 @@ void	destroy_player_model(t_player_model *player)
 		free(player);
 }
 
-/**
- * プレイヤーモデルを初期状態にリセットする
- * @param player プレイヤーモデル
- * @param start_x 開始X座標
- * @param start_y 開始Y座標
- */
 void	reset_player_model(t_player_model *player, int start_x, int start_y)
 {
 	if (!player)

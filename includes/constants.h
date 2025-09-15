@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_textures.c                                    :+:      :+:    :+:   */
+/*   constants.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/15 21:04:48 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/15 21:04:55 by urassh           ###   ########.fr       */
+/*   Created: 2025/09/15 00:00:00 by urassh            #+#    #+#             */
+/*   Updated: 2025/09/15 00:00:00 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "renderer.h"
+#ifndef CONSTANTS_H
+# define CONSTANTS_H
 
-int	load_textures(t_renderer *renderer)
-{
-	if (!renderer || !renderer->mlx)
-		return (1);
-	return (0);
-}
+/* Tile types */
+# define EMPTY '0'
+# define WALL '1'
+# define COLLECT 'C'
+# define EXIT 'E'
+# define PLAYER 'P'
+
+/* Return values */
+# define OK 0
+# define ERROR 1
+
+/* Render settings */
+# define TILE_SIZE 32
+
+#endif

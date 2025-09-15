@@ -16,15 +16,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <sys/types.h>
-
-# define EMPTY '0'
-# define WALL '1'
-# define COLLECT 'C'
-# define EXIT 'E'
-# define PLAYER 'P'
-
-# define OK 0
-# define ERROR 1
+# include "constants.h"
 
 typedef struct s_map
 {

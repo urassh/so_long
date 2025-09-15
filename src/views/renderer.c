@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "renderer.h"
-#include "mlx.h"
 #include <stdlib.h>
 
 t_renderer	*init_renderer(t_mlx_context *mlx)
@@ -36,21 +35,12 @@ void	free_renderer(t_renderer *renderer)
 {
 	if (!renderer)
 		return ;
+	free_textures(renderer);
 	free(renderer);
 }
 
-void	render_tile(t_renderer *r, char tile, int x, int y)
-{
-	if (!r || !r->mlx)
-		return ;
-	(void)tile;
-	(void)x;
-	(void)y;
-}
-
-void	draw_texture_at(t_renderer *r, t_texture *tex, t_vector2d pos)
-{
-	if (!r || !tex)
-		return ;
-	(void)pos;
+void render_game(t_game_state *game) {
+    clear_screen(game->renderer);
+    render_map(game->map, game->renderer);
+    present_screen(game->renderer);
 }

@@ -11,15 +11,18 @@
 /* ************************************************************************** */
 
 #include "renderer.h"
+#include "mlx.h"
 
 void	clear_screen(t_renderer *renderer)
 {
 	if (!renderer || !renderer->mlx)
 		return ;
+	mlx_clear_window(renderer->mlx->mlx_ptr, renderer->mlx->win_ptr);
 }
 
 void	present_screen(t_renderer *renderer)
 {
 	if (!renderer || !renderer->mlx)
 		return ;
+	mlx_do_sync(renderer->mlx->mlx_ptr);
 }

@@ -45,6 +45,10 @@ SRCS = $(SRC_DIR)/main.c \
 	   $(SRC_DIR)/models/map/validation/validate_clearable.c \
 	   $(SRC_DIR)/models/map/validation/validate_valid_characters.c \
 	   $(SRC_DIR)/views/renderer.c \
+	   $(SRC_DIR)/views/texture.c \
+	   $(SRC_DIR)/views/texture_loader.c \
+	   $(SRC_DIR)/views/map_renderer.c \
+	   $(SRC_DIR)/views/screen_utils.c \
 	   $(SRC_DIR)/game/game_state.c \
 	   $(SRC_DIR)/game/game_state_utils.c
 
