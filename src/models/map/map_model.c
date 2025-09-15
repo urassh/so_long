@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   duplicate_map.c                                    :+:      :+:    :+:   */
+/*   map_model.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/13 10:51:00 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/13 11:19:30 by urassh           ###   ########.fr       */
+/*   Created: 2025/09/15 00:00:00 by urassh            #+#    #+#             */
+/*   Updated: 2025/09/15 00:00:00 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,38 @@
 #include "libft.h"
 
 static void	insert_grid(t_map *to_map, t_map *from_map);
+
+t_map	*init_map(void)
+{
+	t_map	*map;
+
+	map = malloc(sizeof(t_map));
+	if (!map)
+		return (NULL);
+	map->grid = NULL;
+	map->width = 0;
+	map->height = 0;
+	return (map);
+}
+
+void	free_map(t_map *map)
+{
+	int	i;
+
+	if (!map)
+		return ;
+	if (map->grid)
+	{
+		i = 0;
+		while (i < map->height)
+		{
+			free(map->grid[i]);
+			i++;
+		}
+		free(map->grid);
+	}
+	free(map);
+}
 
 t_map	*duplicate_map(t_map *map)
 {

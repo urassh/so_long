@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_map.c                                         :+:      :+:    :+:   */
+/*   validate_single_exit.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/11 17:13:27 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/11 17:18:18 by urassh           ###   ########.fr       */
+/*   Created: 2025/09/11 20:52:00 by urassh            #+#    #+#             */
+/*   Updated: 2025/09/11 20:52:00 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "map_validation.h"
 
-t_map	*init_map(void)
+int	validate_map_single_exit(t_map *map)
 {
-	t_map	*map;
+	int	i;
+	int	j;
+	int	exit_count;
 
-	map = malloc(sizeof(t_map));
-	if (!map)
-		return (NULL);
-	map->grid = NULL;
-	map->width = 0;
-	map->height = 0;
-	return (map);
+	i = 0;
+	exit_count = 0;
+	while (i < map->height)
+	{
+		j = 0;
+		while (map->grid[i][j])
+		{
+			if (map->grid[i][j] == EXIT)
+				exit_count++;
+			j++;
+		}
+		i++;
+	}
+	if (exit_count == 1)
+		return (OK);
+	return (ERROR);
 }

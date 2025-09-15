@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map_rule.h"
+#include "map_validation.h"
 
 static void	find_player_position(t_map *map, int *player_x, int *player_y);
 static void	flood_fill(t_map *map, int x, int y);

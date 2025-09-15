@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_map.c                                         :+:      :+:    :+:   */
+/*   validate_single_player.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/11 17:15:54 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/11 17:18:41 by urassh           ###   ########.fr       */
+/*   Created: 2025/09/11 20:52:00 by urassh            #+#    #+#             */
+/*   Updated: 2025/09/11 20:52:00 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "map_validation.h"
 
-void	free_map(t_map *map)
+int	validate_map_single_player(t_map *map)
 {
 	int	i;
+	int	j;
+	int	player_count;
 
-	if (map == NULL)
-		return ;
-	if (map->grid != NULL)
+	i = 0;
+	player_count = 0;
+	while (i < map->height)
 	{
-		i = 0;
-		while (i < map->height && map->grid[i] != NULL)
+		j = 0;
+		while (map->grid[i][j])
 		{
-			free(map->grid[i]);
-			i++;
+			if (map->grid[i][j] == PLAYER)
+				player_count++;
+			j++;
 		}
-		free(map->grid);
+		i++;
 	}
-	free(map);
+	if (player_count == 1)
+		return (OK);
+	return (ERROR);
 }

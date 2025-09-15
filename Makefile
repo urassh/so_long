@@ -31,18 +31,17 @@ SRCS = $(SRC_DIR)/main.c \
 	   $(SRC_DIR)/libft/ft_strchr.c \
 	   $(SRC_DIR)/libft/ft_strjoin.c \
 	   $(SRC_DIR)/libft/ft_strlen.c \
-	   $(SRC_DIR)/map/load_map.c \
-	   $(SRC_DIR)/map/free_map.c \
-	   $(SRC_DIR)/map/init_map.c \
-	   $(SRC_DIR)/map/validate_map.c \
-	   $(SRC_DIR)/map/duplicate_map.c \
-	   $(SRC_DIR)/map/rules/validate_rectangular.c \
-	   $(SRC_DIR)/map/rules/validate_surrounded_by_walls.c \
-	   $(SRC_DIR)/map/rules/validate_single_player.c \
-	   $(SRC_DIR)/map/rules/validate_single_exit.c \
-	   $(SRC_DIR)/map/rules/validate_collectibles_exist.c \
-	   $(SRC_DIR)/map/rules/validate_clearable.c \
-	   $(SRC_DIR)/map/rules/validate_valid_characters.c
+	   $(SRC_DIR)/models/player_model.c \
+	   $(SRC_DIR)/models/map/map_model.c \
+	   $(SRC_DIR)/models/map/map_loader.c \
+	   $(SRC_DIR)/models/map/map_validator.c \
+	   $(SRC_DIR)/models/map/validation/validate_rectangular.c \
+	   $(SRC_DIR)/models/map/validation/validate_surrounded_by_walls.c \
+	   $(SRC_DIR)/models/map/validation/validate_single_player.c \
+	   $(SRC_DIR)/models/map/validation/validate_single_exit.c \
+	   $(SRC_DIR)/models/map/validation/validate_collectibles_exist.c \
+	   $(SRC_DIR)/models/map/validation/validate_clearable.c \
+	   $(SRC_DIR)/models/map/validation/validate_valid_characters.c
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 

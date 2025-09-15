@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map_rule.h"
+#include "map_validation.h"
 
 int	validate_map_rectangular(t_map *map)
 {

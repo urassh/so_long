@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_map.c                                     :+:      :+:    :+:   */
+/*   map_validator.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/11 20:46:31 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/13 15:38:48 by urassh           ###   ########.fr       */
+/*   Created: 2025/09/15 00:00:00 by urassh            #+#    #+#             */
+/*   Updated: 2025/09/15 00:00:00 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
-#include "rules/map_rule.h"
+#include "validation/map_validation.h"
 
 int	validate_map(t_map *map)
 {

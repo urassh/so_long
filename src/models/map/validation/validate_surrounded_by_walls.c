@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_single_player.c                          :+:      :+:    :+:   */
+/*   validate_surrounded_by_walls.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,28 +10,37 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map_rule.h"
+#include "map_validation.h"
 
-int	validate_map_single_player(t_map *map)
+static int	all_walls(const char *row);
+
+int	validate_map_surrounded_by_walls(t_map *map)
 {
 	int	i;
-	int	j;
-	int	player_count;
 
+	if (map->grid[0] == NULL || map->grid[map->height - 1] == NULL)
+		return (ERROR);
+	if (ft_strcmp(map->grid[0], map->grid[map->height - 1]) != 0)
+		return (ERROR);
+	if (!all_walls(map->grid[0]) || !all_walls(map->grid[map->height - 1]))
+		return (ERROR);
 	i = 0;
-	player_count = 0;
 	while (i < map->height)
 	{
-		j = 0;
-		while (map->grid[i][j])
-		{
-			if (map->grid[i][j] == PLAYER)
-				player_count++;
-			j++;
-		}
+		if (map->grid[i][0] != '1' || map->grid[i][map->width - 1] != '1')
+			return (ERROR);
 		i++;
 	}
-	if (player_count == 1)
-		return (OK);
-	return (ERROR);
+	return (OK);
+}
+
+static int	all_walls(const char *row)
+{
+	while (*row)
+	{
+		if (*row != WALL)
+			return (0);
+		row++;
+	}
+	return (1);
 }
