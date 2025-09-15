@@ -6,59 +6,49 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 13:34:00 by surayama          #+#    #+#             */
-/*   Updated: 2025/09/11 18:41:48 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/15 15:21:37 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "map.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include "mlx.h"
+#include "so_long.h"
 
-void	test_map_validation(const char *map_path, const char *test_name)
+typedef struct s_data
 {
-	t_map	*map;
-	int		result;
+    void *mlx;
+    void *mlx_win;
+} t_data;
 
-	printf("Testing: %s\n", test_name);
-	printf("Map file: %s\n", map_path);
-	
-	map = load_map(map_path);
-	if (!map)
-	{
-		printf("Result: FAILED (Could not load map)\n");
-		printf("----------------------------------------\n\n");
-		return;
-	}
-	
-	result = validate_map(map);
-	if (result == OK)
-		printf("Result: VALID\n");
-	else
-		printf("Result: INVALID\n");
-	
-	free_map(map);
-	printf("----------------------------------------\n\n");
+int key_handler(int key, t_data *data)
+{
+    printf("Key pressed: %d\n", key);
+    if (key == KEY_ESC)
+    {
+        mlx_destroy_window(data->mlx, data->mlx_win);
+        exit(0);
+    }
+    return (0);
 }
 
-int	main(void)
+int close_handler(t_data *data)
 {
-	printf("=== SO_LONG MAP VALIDATION TESTS ===\n\n");
-	
-	// 有効なマップのテスト
-	test_map_validation("assets/map/test_valid", "Valid Map Test");
-	
-	// 無効なマップのテスト
-	test_map_validation("assets/map/test_multiple_players", "Multiple Players Test (should be INVALID)");
-	test_map_validation("assets/map/test_multiple_exits", "Multiple Exits Test (should be INVALID)");
-	test_map_validation("assets/map/test_no_collectibles", "No Collectibles Test (should be INVALID)");
-	test_map_validation("assets/map/test_not_surrounded", "Not Surrounded by Walls Test (should be INVALID)");
-	test_map_validation("assets/map/test_not_rectangular", "Not Rectangular Test (should be INVALID)");
-	test_map_validation("assets/map/test_invalid_character", "Invalid Character Test (should be INVALID)");
-	test_map_validation("assets/map/test_not_clearable", "Not Clearable Test (should be INVALID)");
-	
-	// 元のマップも追加でテスト
-	test_map_validation("assets/map/map", "Original Map Test");
-	
-	printf("=== ALL TESTS COMPLETED ===\n");
-	return (0);
+    mlx_destroy_window(data->mlx, data->mlx_win);
+    exit(0);
+    return (0);
+}
+
+int main(void)
+{
+    t_data data;
+
+    data.mlx = mlx_init();
+    data.mlx_win = mlx_new_window(data.mlx, 300, 300, "Hello World - Press ESC to exit");
+    
+    mlx_key_hook(data.mlx_win, key_handler, &data);
+    mlx_hook(data.mlx_win, ON_DESTROY, 0, close_handler, &data);
+    
+    mlx_loop(data.mlx);
+    return (0);
 }
