@@ -32,7 +32,10 @@ SRCS = $(SRC_DIR)/main.c \
 	   $(SRC_DIR)/libft/ft_strjoin.c \
 	   $(SRC_DIR)/libft/ft_strlen.c \
 	   $(SRC_DIR)/utils/vector2d.c \
-	   $(SRC_DIR)/models/player_model.c \
+	   $(SRC_DIR)/models/player/player.c \
+	   $(SRC_DIR)/models/player/player_collect.c \
+	   $(SRC_DIR)/models/player/player_position.c \
+	   $(SRC_DIR)/models/player/player_state.c \
 	   $(SRC_DIR)/models/collectible_model.c \
 	   $(SRC_DIR)/models/map/map_model.c \
 	   $(SRC_DIR)/models/map/map_loader.c \
@@ -50,7 +53,10 @@ SRCS = $(SRC_DIR)/main.c \
 	   $(SRC_DIR)/views/render_map.c \
 	   $(SRC_DIR)/views/screen.c \
 	   $(SRC_DIR)/game/game_state.c \
-	   $(SRC_DIR)/game/game_state_utils.c
+	   $(SRC_DIR)/game/game_status.c \
+	   $(SRC_DIR)/game/move_count.c \
+	   $(SRC_DIR)/game/event/push_game_events.c \
+	   $(SRC_DIR)/game/load_game_assets.c 
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 

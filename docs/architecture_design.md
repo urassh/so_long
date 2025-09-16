@@ -33,7 +33,7 @@ src/
 │   ├── game_state.c         # ゲーム状態管理
 │   └── game_loop.c          # メインゲームループ
 ├── models/                  # データ・状態管理 (Model層)
-│   ├── player_model.c       # プレイヤー状態
+│   ├── player.c       # プレイヤー状態
 │   ├── collectible_model.c  # コレクタブル状態
 │   ├── map_model.c          # マップ状態
 │   └── game_model.c         # 全体のゲーム状態
@@ -138,12 +138,12 @@ void render_game(t_game_state *game) {
 - **責務**: データの保持・状態管理
 - **特徴**: 描画やイベントに依存しない純粋なデータ
 ```c
-typedef struct s_player_model {
+typedef struct s_player {
     t_vector2d position;     // 現在位置
     t_vector2d direction;    // 向き
     int health;              // 体力
     int score;               // スコア
-} t_player_model;
+} t_player;
 ```
 
 ### Controller層 (controllers/)
@@ -151,9 +151,9 @@ typedef struct s_player_model {
 - **特徴**: Modelを操作、Viewに依存しない
 ```c
 // プレイヤー移動ロジック
-bool move_player(t_player_model *player, t_vector2d direction, t_map_model *map);
+bool move_player(t_player *player, t_vector2d direction, t_map_model *map);
 // コレクタブル取得ロジック
-bool collect_item(t_player_model *player, t_collectible_model *item);
+bool collect_item(t_player *player, t_collectible_model *item);
 ```
 
 ### View層 (views/)
@@ -161,7 +161,7 @@ bool collect_item(t_player_model *player, t_collectible_model *item);
 - **特徴**: Modelの状態を読み取り描画、状態変更はしない
 ```c
 // プレイヤー描画
-void render_player(t_player_model *player, t_renderer *renderer);
+void render_player(t_player *player, t_renderer *renderer);
 // マップ描画
 void render_map(t_map_model *map, t_renderer *renderer);
 ```
@@ -181,7 +181,7 @@ void on_collectible_obtained(t_collectible_model *item, t_game_state *game);
 ### GameState (中央状態管理)
 ```c
 typedef struct s_game_state {
-    t_player_model      *player;
+    t_player      *player;
     t_map_model         *map;
     t_collectible_model *collectibles;
     t_mlx_context       *mlx;
@@ -401,3 +401,9 @@ void render_game(t_game_state *game) {
 2. 基本的なModel構造を実装
 3. シンプルなRenderer実装
 4. 移動システムのプロトタイプ作成
+
+===================
+
+urassh memo
+1. game_stateの状態が変わったら全レイヤーレンダリング
+2. 各レイヤー(player, collect)の状態が変わったら各レイヤーのみレンダリング

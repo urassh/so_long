@@ -6,7 +6,7 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 00:00:00 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/15 00:00:00 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/17 00:14:10 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	free_game_state(t_game_state *game)
 	if (!game)
 		return ;
 	if (game->player)
-		destroy_player_model(game->player);
+		destroy_player(game->player);
 	if (game->map)
 		free_map(game->map);
 	if (game->collectibles)
@@ -46,26 +46,6 @@ void	free_game_state(t_game_state *game)
 	if (game->renderer)
 		free_renderer(game->renderer);
 	free(game);
-}
-
-int	load_game_map(t_game_state *game, const char *map_path)
-{
-	if (!game || !map_path)
-		return (1);
-	game->map = load_map(map_path);
-	if (!game->map)
-		return (1);
-	if (validate_map(game->map) == ERROR)
-	{
-		free_map(game->map);
-		game->map = NULL;
-		return (1);
-	}
-	game->collectibles = init_collectible_model();
-	if (!game->collectibles)
-		return (1);
-	mark_state_changed(game);
-	return (0);
 }
 
 void	reset_game_state(t_game_state *game)
@@ -83,25 +63,8 @@ void	update_game_state(t_game_state *game)
 {
 	if (!game || !is_game_running(game))
 		return ;
-	calculate_delta_time(game);
-	if (game->player)
-		update_player_animation(game->player, game->delta_time);
-	if (check_win_condition(game))
-		handle_game_clear(game);
-}
-
-void	calculate_delta_time(t_game_state *game)
-{
-	struct timeval	current_time;
-	float			time_diff;
-
-	if (!game)
-		return ;
-	gettimeofday(&current_time, NULL);
-	time_diff = (current_time.tv_sec - game->last_frame_time.tv_sec)
-		+ (current_time.tv_usec - game->last_frame_time.tv_usec) / 1000000.0f;
-	game->delta_time = time_diff;
-	game->last_frame_time = current_time;
+	if (is_game_clear(game))
+		push_game_clear_event(game);
 }
 
 void	mark_state_changed(t_game_state *game)

@@ -6,7 +6,7 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 13:34:00 by surayama          #+#    #+#             */
-/*   Updated: 2025/09/16 23:14:00 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/16 23:59:55 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	// マップの読み込みと検証
-	if (load_game_map(game, argv[1]) != 0)
+	if (load_game_assets(game, argv[1]) != 0)
 	{
 		printf("Error: Failed to load or validate map from %s\n", argv[1]);
 		free_game_state(game);
@@ -119,7 +119,7 @@ int	main(int argc, char **argv)
 			}
 		}
 	}
-	game->player = create_player_model(start_x, start_y);
+	game->player = create_player(start_x, start_y);
 	if (!game->player)
 	{
 		printf("Error: Failed to create player model\n");
