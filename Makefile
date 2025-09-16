@@ -47,7 +47,7 @@ SRCS = $(SRC_DIR)/main.c \
 	   $(SRC_DIR)/views/renderer.c \
 	   $(SRC_DIR)/views/texture.c \
 	   $(SRC_DIR)/views/texture_loader.c \
-	   $(SRC_DIR)/views/map_renderer.c \
+	   $(SRC_DIR)/views/render_map.c \
 	   $(SRC_DIR)/views/screen.c \
 	   $(SRC_DIR)/game/game_state.c \
 	   $(SRC_DIR)/game/game_state_utils.c

@@ -6,12 +6,12 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:00:00 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/15 16:00:00 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/16 23:22:59 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "player_model.h"
+#include <stdlib.h>
 
 /* ************************************************************************** */
 /*                           PLAYER MODEL MANAGEMENT                         */
@@ -30,7 +30,6 @@ t_player_model	*create_player_model(int start_x, int start_y)
 	player = (t_player_model *)malloc(sizeof(t_player_model));
 	if (!player)
 		return (NULL);
-	
 	reset_player_model(player, start_x, start_y);
 	return (player);
 }
@@ -49,7 +48,6 @@ void	reset_player_model(t_player_model *player, int start_x, int start_y)
 {
 	if (!player)
 		return ;
-	
 	player->position.x = start_x;
 	player->position.y = start_y;
 	player->previous_position.x = start_x;
@@ -77,7 +75,6 @@ void	set_player_position(t_player_model *player, int x, int y)
 {
 	if (!player)
 		return ;
-	
 	player->previous_position = player->position;
 	player->position.x = x;
 	player->position.y = y;
@@ -92,8 +89,9 @@ void	set_player_position(t_player_model *player, int x, int y)
  */
 t_vector2d	get_player_position(const t_player_model *player)
 {
-	t_vector2d	empty_pos = {0, 0};
-	
+	t_vector2d	empty_pos;
+
+	empty_pos = {0, 0};
 	if (!player)
 		return (empty_pos);
 	return (player->position);
@@ -229,9 +227,7 @@ void	update_player_animation(t_player_model *player, float delta_time)
 {
 	if (!player)
 		return ;
-	
 	player->animation_time += delta_time;
-	
 	// アニメーション完了チェック
 	if (player->animation_time > 0.3f && player->state == PLAYER_MOVING)
 	{
@@ -274,8 +270,9 @@ void	clear_player_position_changed_flag(t_player_model *player)
  */
 t_vector2d	direction_to_vector(t_direction direction)
 {
-	t_vector2d	vector = {0, 0};
-	
+	t_vector2d	vector;
+
+	vector = {0, 0};
 	if (direction == DIR_UP)
 		vector.y = -1;
 	else if (direction == DIR_DOWN)
@@ -284,7 +281,6 @@ t_vector2d	direction_to_vector(t_direction direction)
 		vector.x = -1;
 	else if (direction == DIR_RIGHT)
 		vector.x = 1;
-	
 	return (vector);
 }
 
@@ -297,7 +293,6 @@ t_direction	vector_to_direction(const t_vector2d *vector)
 {
 	if (!vector)
 		return (DIR_NONE);
-	
 	if (vector->x == 0 && vector->y == -1)
 		return (DIR_UP);
 	else if (vector->x == 0 && vector->y == 1)
@@ -306,6 +301,5 @@ t_direction	vector_to_direction(const t_vector2d *vector)
 		return (DIR_LEFT);
 	else if (vector->x == 1 && vector->y == 0)
 		return (DIR_RIGHT);
-	
 	return (DIR_NONE);
 }

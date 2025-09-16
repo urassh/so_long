@@ -6,43 +6,18 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 00:00:00 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/15 00:00:00 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/16 23:14:29 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "renderer.h"
 #include "mlx.h"
+#include "renderer.h"
 #include <stdlib.h>
 
-static int	allocate_textures(t_renderer *renderer)
-{
-	renderer->wall_texture = NULL;
-	renderer->empty_texture = NULL;
-	renderer->player_texture = NULL;
-	renderer->collectible_texture = NULL;
-	renderer->exit_texture = NULL;
-	return (OK);
-}
-
-static int	load_all_texture_files(t_renderer *renderer)
-{
-	renderer->wall_texture = load_texture_from_file(
-		renderer->mlx->mlx_ptr, "assets/textures/wall.xpm");
-	renderer->empty_texture = load_texture_from_file(
-		renderer->mlx->mlx_ptr, "assets/textures/empty.xpm");
-	renderer->player_texture = load_texture_from_file(
-		renderer->mlx->mlx_ptr, "assets/textures/player.xpm");
-	renderer->collectible_texture = load_texture_from_file(
-		renderer->mlx->mlx_ptr, "assets/textures/collect.xpm");
-	renderer->exit_texture = load_texture_from_file(
-		renderer->mlx->mlx_ptr, "assets/textures/exit.xpm");
-
-	if (!renderer->wall_texture || !renderer->empty_texture ||
-		!renderer->player_texture || !renderer->collectible_texture ||
-		!renderer->exit_texture)
-		return (ERROR);
-	return (OK);
-}
+static int			load_all_texture_files(t_renderer *renderer);
+static t_texture	*load_texture_from_file(void *mlx_ptr,
+						const char *file_path);
+static int			allocate_textures(t_renderer *renderer);
 
 int	load_textures(t_renderer *renderer)
 {
@@ -58,23 +33,53 @@ int	load_textures(t_renderer *renderer)
 	return (OK);
 }
 
-void	free_textures(t_renderer *renderer)
+static int	allocate_textures(t_renderer *renderer)
 {
-	if (!renderer)
-		return ;
-	if (renderer->wall_texture)
-		free_texture(renderer->mlx->mlx_ptr, renderer->wall_texture);
-	if (renderer->empty_texture)
-		free_texture(renderer->mlx->mlx_ptr, renderer->empty_texture);
-	if (renderer->player_texture)
-		free_texture(renderer->mlx->mlx_ptr, renderer->player_texture);
-	if (renderer->collectible_texture)
-		free_texture(renderer->mlx->mlx_ptr, renderer->collectible_texture);
-	if (renderer->exit_texture)
-		free_texture(renderer->mlx->mlx_ptr, renderer->exit_texture);
-    renderer->wall_texture = NULL;
-    renderer->empty_texture = NULL;
-    renderer->player_texture = NULL;
-    renderer->collectible_texture = NULL;
-    renderer->exit_texture = NULL;
+	renderer->wall_texture = NULL;
+	renderer->empty_texture = NULL;
+	renderer->player_texture = NULL;
+	renderer->collect_texture = NULL;
+	renderer->exit_texture = NULL;
+	return (OK);
+}
+
+static int	load_all_texture_files(t_renderer *renderer)
+{
+	renderer->wall_texture = load_texture_from_file(renderer->mlx->mlx_ptr,
+			"assets/textures/wall.xpm");
+	renderer->empty_texture = load_texture_from_file(renderer->mlx->mlx_ptr,
+			"assets/textures/empty.xpm");
+	renderer->player_texture = load_texture_from_file(renderer->mlx->mlx_ptr,
+			"assets/textures/player.xpm");
+	renderer->collect_texture = load_texture_from_file(renderer->mlx->mlx_ptr,
+			"assets/textures/collect.xpm");
+	renderer->exit_texture = load_texture_from_file(renderer->mlx->mlx_ptr,
+			"assets/textures/exit.xpm");
+	if (!renderer->wall_texture || !renderer->empty_texture
+		|| !renderer->player_texture || !renderer->collect_texture
+		|| !renderer->exit_texture)
+		return (ERROR);
+	return (OK);
+}
+
+static t_texture	*load_texture_from_file(void *mlx_ptr,
+		const char *file_path)
+{
+	t_texture	*texture;
+
+	if (!mlx_ptr || !file_path)
+		return (NULL);
+	texture = init_texture();
+	if (!texture)
+		return (NULL);
+	texture->img_ptr = mlx_xpm_file_to_image(mlx_ptr, (char *)file_path,
+			&texture->width, &texture->height);
+	if (!texture->img_ptr)
+	{
+		free_texture(mlx_ptr, texture);
+		return (NULL);
+	}
+	texture->data = mlx_get_data_addr(texture->img_ptr,
+			&texture->bits_per_pixel, &texture->line_length, &texture->endian);
+	return (texture);
 }
