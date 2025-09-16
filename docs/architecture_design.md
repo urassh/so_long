@@ -151,7 +151,7 @@ typedef struct s_player {
 - **特徴**: Modelを操作、Viewに依存しない
 ```c
 // プレイヤー移動ロジック
-bool move_player(t_player *player, t_vector2d direction, t_map_model *map);
+bool move_player(t_player *player, t_vector2d direction, t_map *map);
 // コレクタブル取得ロジック
 bool collect_item(t_player *player, t_collectible_model *item);
 ```
@@ -163,7 +163,7 @@ bool collect_item(t_player *player, t_collectible_model *item);
 // プレイヤー描画
 void render_player(t_player *player, t_renderer *renderer);
 // マップ描画
-void render_map(t_map_model *map, t_renderer *renderer);
+void render_map(t_map *map, t_renderer *renderer);
 ```
 
 ### Event層 (events/)
@@ -182,7 +182,7 @@ void on_collectible_obtained(t_collectible_model *item, t_game_state *game);
 ```c
 typedef struct s_game_state {
     t_player      *player;
-    t_map_model         *map;
+    t_map         *map;
     t_collectible_model *collectibles;
     t_mlx_context       *mlx;
     t_renderer          *renderer;
