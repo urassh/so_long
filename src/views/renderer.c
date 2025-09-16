@@ -45,6 +45,7 @@ void	render_game(t_game_state *game)
 {
 	clear_screen(game->renderer);
 	render_map(game->renderer, game->map);
+	render_player(game->renderer, game->player);
 	present_screen(game->renderer);
 }
 
