@@ -47,16 +47,16 @@ SRCS = $(SRC_DIR)/main.c \
 	   $(SRC_DIR)/models/map/validation/validate_collectibles_exist.c \
 	   $(SRC_DIR)/models/map/validation/validate_clearable.c \
 	   $(SRC_DIR)/models/map/validation/validate_valid_characters.c \
+	   $(SRC_DIR)/models/game/game_state.c \
+	   $(SRC_DIR)/models/game/game_status.c \
+	   $(SRC_DIR)/models/game/move_count.c \
+	   $(SRC_DIR)/models/game/event/push_game_events.c \
+	   $(SRC_DIR)/models/game/load_game_assets.c. \
 	   $(SRC_DIR)/views/renderer.c \
 	   $(SRC_DIR)/views/texture.c \
 	   $(SRC_DIR)/views/texture_loader.c \
 	   $(SRC_DIR)/views/render_map.c \
-	   $(SRC_DIR)/views/screen.c \
-	   $(SRC_DIR)/game/game_state.c \
-	   $(SRC_DIR)/game/game_status.c \
-	   $(SRC_DIR)/game/move_count.c \
-	   $(SRC_DIR)/game/event/push_game_events.c \
-	   $(SRC_DIR)/game/load_game_assets.c 
+	   $(SRC_DIR)/views/screen.c
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
