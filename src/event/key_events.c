@@ -10,14 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "events.h"
 #include "so_long.h"
 #include "vector2d.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-int	on_key_down(int key_code, t_game_state *game)
+
+int on_key_down(int key_code, void *param)
 {
+	t_game_state *game = (t_game_state *)param;
 	if (!game)
 		return (0);
 	if (get_game_status(game) != GAME_RUNNING)

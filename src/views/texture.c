@@ -48,7 +48,7 @@ t_texture	*get_texture_for_tile(t_renderer *r, char tile)
 
 void	free_textures(t_renderer *renderer)
 {
-	if (!renderer)
+	if (!renderer || !renderer->mlx || !renderer->mlx->mlx_ptr)
 		return ;
 	if (renderer->wall_texture)
 		free_texture(renderer->mlx->mlx_ptr, renderer->wall_texture);

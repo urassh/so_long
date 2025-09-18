@@ -33,7 +33,7 @@ SRCS = $(SRC_DIR)/main.c \
 	   $(SRC_DIR)/libft/ft_strlen.c \
 	   $(SRC_DIR)/utils/vector2d.c \
 	   $(SRC_DIR)/utils/calculate_window_size.c \
-	   $(SRC_DIR)/utils/find_player.c \
+	   $(SRC_DIR)/utils/find.c \
 	   $(SRC_DIR)/controllers/game_loop.c \
 	   $(SRC_DIR)/models/player/player.c \
 	   $(SRC_DIR)/models/player/player_collect.c \
@@ -55,6 +55,7 @@ SRCS = $(SRC_DIR)/main.c \
 	   $(SRC_DIR)/models/game/move_count.c \
 	   $(SRC_DIR)/models/game/event/push_game_events.c \
 	   $(SRC_DIR)/models/game/load_game_assets.c \
+	   $(SRC_DIR)/models/game/create_game.c \
 	   $(SRC_DIR)/event/key_events.c \
 	   $(SRC_DIR)/event/window_events.c \
 	   $(SRC_DIR)/event/event_setup.c \

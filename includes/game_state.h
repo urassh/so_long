@@ -6,7 +6,7 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 00:00:00 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/17 00:14:10 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/18 22:21:37 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_game_state
 }						t_game_state;
 
 t_game_state			*init_game_state(void);
+t_game_state			*create_game(void);
 void					free_game_state(t_game_state *game);
 int						load_game_assets(t_game_state *game,
 							const char *map_path);

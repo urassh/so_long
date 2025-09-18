@@ -6,7 +6,7 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 00:00:00 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/15 00:00:00 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/18 23:32:33 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	add_collectible(t_collectible_model *model, t_vector2d pos)
 {
 	t_collectible	*new_items;
 	int				new_count;
+	int				i;
 
 	if (!model)
 		return (1);
@@ -49,12 +50,9 @@ int	add_collectible(t_collectible_model *model, t_vector2d pos)
 		return (1);
 	if (model->items && model->count > 0)
 	{
-		int	i = 0;
+		i = 0;
 		while (i < model->count)
-		{
-			new_items[i] = model->items[i];
-			i++;
-		}
+			new_items[i++] = model->items[i];
 		free(model->items);
 	}
 	new_items[model->count].position = pos;

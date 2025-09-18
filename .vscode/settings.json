@@ -5,6 +5,8 @@
 		"__tree": "c",
 		"map": "c",
 		"player.h": "c",
-		"game_state.h": "c"
+		"game_state.h": "c",
+		"so_long.h": "c",
+		"events.h": "c"
 	}
 }

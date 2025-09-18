@@ -6,7 +6,7 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 00:00:00 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/17 00:00:00 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/18 23:08:20 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,5 @@ int			find_player(const t_map *map, int *x, int *y);
  * @return プレイヤーの位置（見つからない場合は(0,0)）
  */
 t_vector2d	find_player_position(const t_map *map);
-
-/**
- * @brief プレイヤーがマップに存在するかチェック
- * @param map マップモデル
- * @return プレイヤーが存在する場合は1、存在しない場合は0
- */
-int			has_player(const t_map *map);
 
 #endif
