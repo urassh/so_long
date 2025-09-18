@@ -6,10 +6,9 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 00:00:00 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/17 00:00:00 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/18 23:33:41 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "events.h"
 #include "so_long.h"
@@ -17,10 +16,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-int on_key_down(int key_code, void *param)
+int	on_key_down(int key_code, void *param)
 {
-	t_game_state *game = (t_game_state *)param;
+	t_game_state	*game;
+
+	game = (t_game_state *)param;
 	if (!game)
 		return (0);
 	if (get_game_status(game) != GAME_RUNNING)
@@ -29,4 +29,3 @@ int on_key_down(int key_code, void *param)
 		return (on_destroy(game));
 	return (0);
 }
-
