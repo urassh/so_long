@@ -6,7 +6,7 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 00:00:00 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/18 23:34:41 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/24 23:49:40 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,7 @@ int	update_game(t_game_state *game)
 {
 	if (!game || !game->renderer || !game->map)
 		return (0);
-	
-	// ゲームステートの変更をチェックしてイベントを処理
 	subscribe_game_state(game);
-	
 	if (get_game_status(game) != GAME_RUNNING)
 		return (0);
 	if (game->state_changed)

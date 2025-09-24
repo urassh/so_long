@@ -6,7 +6,7 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 00:00:00 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/24 22:13:46 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/24 23:51:14 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,6 @@ void	free_game_state(t_game_state *game)
 	free(game);
 }
 
-void	reset_game_state(t_game_state *game)
-{
-	if (!game)
-		return ;
-	game->move_count = 0;
-	game->status = GAME_RUNNING;
-	if (game->player)
-		set_player_state(game->player, PLAYER_IDLE);
-	mark_state_changed(game);
-}
-
 void	update_game_state(t_game_state *game)
 {
 	if (!game || !is_game_running(game))
@@ -93,10 +82,4 @@ void	subscribe_game_state(t_game_state *game)
 			game->on_clear(game);
 		game->previous_status = game->status;
 	}
-}
-
-void	set_clear_event_handler(t_game_state *game, t_game_event_handler handler)
-{
-	if (game)
-		game->on_clear = handler;
 }
