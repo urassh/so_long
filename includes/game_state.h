@@ -21,6 +21,8 @@
 # include <stdbool.h>
 # include <sys/time.h>
 
+typedef void (*t_game_event_handler)(struct s_game_state *game);
+
 typedef enum e_game_status
 {
 	GAME_RUNNING = 0,
@@ -39,9 +41,11 @@ typedef struct s_game_state
 	t_renderer			*renderer;
 	int					move_count;
 	t_game_status		status;
+	t_game_status		previous_status;
 	bool				state_changed;
 	struct timeval		last_frame_time;
 	float				delta_time;
+	t_game_event_handler on_clear;
 }						t_game_state;
 
 t_game_state			*init_game_state(void);
@@ -67,5 +71,7 @@ void					increment_move_count(t_game_state *game);
 int						get_move_count(const t_game_state *game);
 
 void					push_game_clear_event(t_game_state *game);
+void					subscribe_game_state(t_game_state *game);
+void					set_clear_event_handler(t_game_state *game, t_game_event_handler handler);
 
 #endif

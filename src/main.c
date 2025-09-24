@@ -30,6 +30,7 @@ int	main(void)
 		free_game_state(game);
 		return (1);
 	}
+	set_clear_event_handler(game, on_clear);
 	mlx_key_hook(game->mlx->win_ptr, on_key_down, game);
 	mlx_loop_hook(game->mlx->mlx_ptr, (int (*)(void *))update_game, game);
 	mlx_loop(game->mlx->mlx_ptr);

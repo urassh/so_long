@@ -89,7 +89,6 @@ void	handle_exit(t_game_state *game, int x, int y)
 		if (all_collectibles_obtained(game->collectibles))
 		{
 			set_game_status(game, GAME_CLEAR);
-			printf("Game Clear! Moves: %d\n", get_move_count(game));
 		}
 		else
 		{

@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "controller.h"
+#include "events.h"
+#include "game_state.h"
 #include "mlx.h"
 #include "renderer.h"
 #include <stdio.h>
@@ -33,6 +35,10 @@ int	update_game(t_game_state *game)
 {
 	if (!game || !game->renderer || !game->map)
 		return (0);
+	
+	// ゲームステートの変更をチェックしてイベントを処理
+	subscribe_game_state(game);
+	
 	if (get_game_status(game) != GAME_RUNNING)
 		return (0);
 	if (game->state_changed)

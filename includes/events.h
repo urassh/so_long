@@ -19,5 +19,6 @@ int	on_key_down(int key_code, void *param);
 int	on_destroy(t_game_state *game);
 
 int	setup_event_handlers(t_game_state *game);
+void	on_clear(t_game_state *game);
 
 #endif

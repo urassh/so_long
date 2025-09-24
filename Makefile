@@ -62,6 +62,7 @@ SRCS = $(SRC_DIR)/main.c \
 	   $(SRC_DIR)/event/key_events.c \
 	   $(SRC_DIR)/event/window_events.c \
 	   $(SRC_DIR)/event/event_setup.c \
+	   $(SRC_DIR)/event/game_events.c \
 	   $(SRC_DIR)/views/renderer.c \
 	   $(SRC_DIR)/views/texture.c \
 	   $(SRC_DIR)/views/texture_loader.c \

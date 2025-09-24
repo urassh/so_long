@@ -12,6 +12,7 @@
 
 #include "game_state.h"
 #include <stdlib.h>
+#include <sys/time.h>
 
 t_game_state	*init_game_state(void)
 {
@@ -27,9 +28,11 @@ t_game_state	*init_game_state(void)
 	game->renderer = NULL;
 	game->move_count = 0;
 	game->status = GAME_RUNNING;
+	game->previous_status = GAME_RUNNING;
 	game->state_changed = true;
 	gettimeofday(&game->last_frame_time, NULL);
 	game->delta_time = 0.0f;
+	game->on_clear = NULL;
 	return (game);
 }
 
@@ -78,4 +81,22 @@ void	mark_state_changed(t_game_state *game)
 {
 	if (game)
 		game->state_changed = true;
+}
+
+void	subscribe_game_state(t_game_state *game)
+{
+	if (!game)
+		return ;
+	if (game->status != game->previous_status)
+	{
+		if (game->status == GAME_CLEAR && game->on_clear)
+			game->on_clear(game);
+		game->previous_status = game->status;
+	}
+}
+
+void	set_clear_event_handler(t_game_state *game, t_game_event_handler handler)
+{
+	if (game)
+		game->on_clear = handler;
 }
