@@ -19,6 +19,7 @@
 struct s_map;
 struct s_game_state;
 struct s_player;
+struct s_collectible_state;
 
 typedef struct s_mlx_context
 {
@@ -60,6 +61,8 @@ void				present_screen(t_renderer *renderer);
 void				render_tile(t_renderer *r, char tile, int x, int y);
 void				render_map(t_renderer *renderer, struct s_map *map);
 void				render_player(t_renderer *renderer, struct s_player *player);
+void				render_collectibles(t_renderer *renderer,
+						struct s_collectible_state *state);
 t_texture			*get_texture_for_tile(t_renderer *r, char tile);
 void				render_game(struct s_game_state *game);
 

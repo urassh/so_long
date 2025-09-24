@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "collectible_state.h"
 #include "game_state.h"
 #include "mlx.h"
 #include "renderer.h"
@@ -45,6 +46,7 @@ void	render_game(t_game_state *game)
 {
 	clear_screen(game->renderer);
 	render_map(game->renderer, game->map);
+	render_collectibles(game->renderer, game->collectibles);
 	render_player(game->renderer, game->player);
 	present_screen(game->renderer);
 }

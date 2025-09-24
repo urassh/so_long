@@ -66,6 +66,7 @@ SRCS = $(SRC_DIR)/main.c \
 	   $(SRC_DIR)/views/texture_loader.c \
 	   $(SRC_DIR)/views/render_map.c \
 	   $(SRC_DIR)/views/render_player.c \
+	   $(SRC_DIR)/views/render_collectibles.c \
 	   $(SRC_DIR)/views/screen.c
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
