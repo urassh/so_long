@@ -35,6 +35,7 @@ SRCS = $(SRC_DIR)/main.c \
 	   $(SRC_DIR)/utils/calculate_window_size.c \
 	   $(SRC_DIR)/utils/find.c \
 	   $(SRC_DIR)/controllers/game_loop.c \
+	   $(SRC_DIR)/controllers/player_controller.c \
 	   $(SRC_DIR)/models/player/player.c \
 	   $(SRC_DIR)/models/player/player_collect.c \
 	   $(SRC_DIR)/models/player/player_position.c \

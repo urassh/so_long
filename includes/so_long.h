@@ -14,6 +14,7 @@
 # define SO_LONG_H
 
 # include "map.h"
+# include "player_controller.h"
 
 /* ************************************************************************** */
 /*                               KEY CODES                                   */
