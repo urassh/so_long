@@ -2,7 +2,7 @@
 static char *player[] = {
 /* columns rows colors chars-per-pixel */
 "32 32 8 1",
-"  c #2E2E2E",
+"  c None",
 ". c #FFDBAC",
 "X c #8B4513",
 "o c #FF6347",
