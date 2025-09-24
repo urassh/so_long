@@ -2,7 +2,7 @@
 static char *exit[] = {
 /* columns rows colors chars-per-pixel */
 "32 32 6 1",
-"  c #2E2E2E",
+"  c None",
 ". c #8B4513",
 "X c #32CD32",
 "o c #228B22",

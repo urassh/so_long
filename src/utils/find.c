@@ -21,6 +21,11 @@ int	find_player(const t_map *map, int *x, int *y)
 	return (find_tile(map, x, y, PLAYER));
 }
 
+int	find_exit(const t_map *map, int *x, int *y)
+{
+	return (find_tile(map, x, y, EXIT));
+}
+
 static int	find_tile(const t_map *map, int *x, int *y, char tile)
 {
 	int	map_x;
@@ -58,6 +63,22 @@ t_vector2d	find_player_position(const t_map *map)
 	position.x = 0;
 	position.y = 0;
 	if (find_player(map, &x, &y) == 1)
+	{
+		position.x = x;
+		position.y = y;
+	}
+	return (position);
+}
+
+t_vector2d	find_exit_position(const t_map *map)
+{
+	t_vector2d	position;
+	int			x;
+	int			y;
+
+	position.x = 0;
+	position.y = 0;
+	if (find_exit(map, &x, &y) == OK)
 	{
 		position.x = x;
 		position.y = y;

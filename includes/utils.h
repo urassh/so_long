@@ -44,4 +44,20 @@ int			find_player(const t_map *map, int *x, int *y);
  */
 t_vector2d	find_player_position(const t_map *map);
 
+/**
+ * @brief マップから出口の位置を取得
+ * @param map マップモデル
+ * @param x 出口のx座標を格納するポインタ
+ * @param y 出口のy座標を格納するポインタ
+ * @return 出口が見つかった場合はOK、エラーの場合はERROR
+ */
+int			find_exit(const t_map *map, int *x, int *y);
+
+/**
+ * @brief マップから出口の位置をt_vector2dで取得
+ * @param map マップモデル
+ * @return 出口の位置（見つからない場合は(0,0)）
+ */
+t_vector2d	find_exit_position(const t_map *map);
+
 #endif
