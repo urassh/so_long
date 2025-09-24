@@ -6,7 +6,7 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 00:00:00 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/18 22:54:12 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/24 22:13:46 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	free_game_state(t_game_state *game)
 	if (game->map)
 		free_map(game->map);
 	if (game->collectibles)
-		free_collectible_model(game->collectibles);
+		free_collectible_state(game->collectibles);
 	if (game->renderer)
 		free_renderer(game->renderer);
 	if (game->mlx)

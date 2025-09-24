@@ -6,7 +6,7 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 00:01:12 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/18 22:32:44 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/24 22:13:46 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	load_game_assets(t_game_state *game, const char *map_path)
 		game->map = NULL;
 		return (ERROR);
 	}
-	game->collectibles = init_collectible_model();
+	game->collectibles = init_collectible_state();
 	if (!game->collectibles)
 		return (ERROR);
 	mark_state_changed(game);

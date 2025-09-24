@@ -34,7 +34,7 @@ src/
 │   └── game_loop.c          # メインゲームループ
 ├── models/                  # データ・状態管理 (Model層)
 │   ├── player.c       # プレイヤー状態
-│   ├── collectible_model.c  # コレクタブル状態
+│   ├── collectible_state.c  # コレクタブル状態
 │   ├── map_model.c          # マップ状態
 │   └── game_model.c         # 全体のゲーム状態
 ├── controllers/             # ビジネスロジック (Controller層)
@@ -153,7 +153,7 @@ typedef struct s_player {
 // プレイヤー移動ロジック
 bool move_player(t_player *player, t_vector2d direction, t_map *map);
 // コレクタブル取得ロジック
-bool collect_item(t_player *player, t_collectible_model *item);
+bool collect_item(t_player *player, t_collectible_state *item);
 ```
 
 ### View層 (views/)
@@ -173,7 +173,7 @@ void render_map(t_map *map, t_renderer *renderer);
 // キー入力イベント
 void on_key_pressed(int key, t_game_state *game);
 // ゲームイベント
-void on_collectible_obtained(t_collectible_model *item, t_game_state *game);
+void on_collectible_obtained(t_collectible_state *item, t_game_state *game);
 ```
 
 ## 🎮 具体的な実装例
@@ -183,7 +183,7 @@ void on_collectible_obtained(t_collectible_model *item, t_game_state *game);
 typedef struct s_game_state {
     t_player      *player;
     t_map         *map;
-    t_collectible_model *collectibles;
+    t_collectible_state *collectibles;
     t_mlx_context       *mlx;
     t_renderer          *renderer;
     int                 move_count;

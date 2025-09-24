@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   collectible_model.c                                :+:      :+:    :+:   */
+/*   collectible_state.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 00:00:00 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/24 22:03:57 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/24 22:38:51 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "collectible_model.h"
+#include "collectible_state.h"
 #include <stdlib.h>
 
-t_collectible_model	*init_collectible_model(void)
+t_collectible_state	*init_collectible_state(void)
 {
-	t_collectible_model	*model;
+	t_collectible_state	*model;
 
-	model = malloc(sizeof(t_collectible_model));
+	model = malloc(sizeof(t_collectible_state));
 	if (!model)
 		return (NULL);
 	model->items = NULL;
@@ -27,7 +27,7 @@ t_collectible_model	*init_collectible_model(void)
 	return (model);
 }
 
-void	free_collectible_model(t_collectible_model *model)
+void	free_collectible_state(t_collectible_state *model)
 {
 	if (!model)
 		return ;
@@ -36,35 +36,7 @@ void	free_collectible_model(t_collectible_model *model)
 	free(model);
 }
 
-int	add_collectible(t_collectible_model *model, t_vector2d pos)
-{
-	t_collectible	*new_items;
-	int				i;
-
-	if (!model)
-		return (1);
-	model->count += 1;
-	new_items = malloc(sizeof(t_collectible) * model->count);
-	if (!new_items)
-		return (1);
-	if (model->items && model->count > 0)
-	{
-		i = 0;
-		while (i < model->count)
-		{
-			new_items[i] = model->items[i];
-			i++;
-		}
-		free(model->items);
-	}
-	new_items[model->count].position = pos;
-	new_items[model->count].is_active = true;
-	model->items = new_items;
-	model->state_changed = true;
-	return (0);
-}
-
-int	collect_item_at(t_collectible_model *model, t_vector2d pos)
+int	collect_item_at(t_collectible_state *model, t_vector2d pos)
 {
 	int	i;
 
@@ -86,7 +58,7 @@ int	collect_item_at(t_collectible_model *model, t_vector2d pos)
 	return (1);
 }
 
-bool	all_collectibles_obtained(t_collectible_model *model)
+bool	all_collectibles_obtained(t_collectible_state *model)
 {
 	if (!model)
 		return (false);

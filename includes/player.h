@@ -33,7 +33,6 @@ typedef struct s_player
 	bool			position_changed;
 }					t_player;
 
-t_player			*create_player(int start_x, int start_y);
 void				destroy_player(t_player *player);
 void				reset_player(t_player *player, int start_x, int start_y);
 void				clear_player_position_changed_flag(t_player *player);

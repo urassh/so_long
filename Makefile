@@ -39,7 +39,9 @@ SRCS = $(SRC_DIR)/main.c \
 	   $(SRC_DIR)/models/player/player_collect.c \
 	   $(SRC_DIR)/models/player/player_position.c \
 	   $(SRC_DIR)/models/player/player_state.c \
-	   $(SRC_DIR)/models/collectible_model.c \
+	   $(SRC_DIR)/models/collectible/collectible_state.c \
+	   $(SRC_DIR)/models/collectible/add_collectible.c \
+	   $(SRC_DIR)/models/collectible/create_collect_state.c \
 	   $(SRC_DIR)/models/map/map_model.c \
 	   $(SRC_DIR)/models/map/map_loader.c \
 	   $(SRC_DIR)/models/map/map_validator.c \

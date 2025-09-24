@@ -10,13 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "constants.h"
+#include "map.h"
 #include "player.h"
+#include "utils.h"
 #include <stdlib.h>
 
-t_player	*create_player(int start_x, int start_y)
+t_player	*create_player(t_map *map)
 {
 	t_player	*player;
+	int			start_x;
+	int			start_y;
 
+	start_x = 0;
+	start_y = 0;
+	if (find_player(map, &start_x, &start_y) == ERROR)
+		return (NULL);
 	player = (t_player *)malloc(sizeof(t_player));
 	if (!player)
 		return (NULL);

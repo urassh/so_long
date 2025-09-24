@@ -6,18 +6,18 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 22:07:03 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/18 23:13:18 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/24 22:32:08 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_state.h"
-#include "utils.h"
 #include "mlx.h"
+#include "utils.h"
 
 static void		*failure_game(t_game_state *game);
 static int		create_mlx(t_game_state *game);
 static int		create_window(t_game_state *game);
-static int		create_renderer(t_game_state *game);
+static int		create_game_state(t_game_state *game);
 
 t_game_state	*create_game(void)
 {
@@ -32,7 +32,7 @@ t_game_state	*create_game(void)
 		return (failure_game(game));
 	if (create_window(game) == ERROR)
 		return (failure_game(game));
-	if (create_renderer(game) == ERROR)
+	if (create_game_state(game) == ERROR)
 		return (failure_game(game));
 	return (game);
 }
@@ -66,22 +66,23 @@ static int	create_window(t_game_state *game)
 	return (OK);
 }
 
-static int	create_renderer(t_game_state *game)
+static int	create_game_state(t_game_state *game)
 {
-	int	start_x;
-	int	start_y;
+	t_player			*player;
+	t_collectible_state	*collect_state;
 
-	start_x = 0;
-	start_y = 0;
 	game->renderer = init_renderer(game->mlx);
 	if (!game->renderer)
 		return (ERROR);
 	if (load_textures(game->renderer) == ERROR)
 		return (ERROR);
-	if (find_player(game->map, &start_x, &start_y) == ERROR)
+	player = create_player(game->map);
+	if (player == NULL)
 		return (ERROR);
-	game->player = create_player(start_x, start_y);
-	if (!game->player)
+	collect_state = create_collect_state(game->map);
+	if (collect_state == NULL)
 		return (ERROR);
+	game->player = player;
+	game->collectibles = collect_state;
 	return (OK);
 }

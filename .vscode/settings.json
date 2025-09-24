@@ -7,6 +7,8 @@
 		"player.h": "c",
 		"game_state.h": "c",
 		"so_long.h": "c",
-		"events.h": "c"
+		"events.h": "c",
+		"bitset": "c",
+		"unordered_map": "c"
 	}
 }

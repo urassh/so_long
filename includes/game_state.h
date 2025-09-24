@@ -6,14 +6,14 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 00:00:00 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/18 22:21:37 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/24 22:33:47 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_STATE_H
 # define GAME_STATE_H
 
-# include "collectible_model.h"
+# include "collectible_state.h"
 # include "map.h"
 # include "player.h"
 # include "renderer.h"
@@ -34,7 +34,7 @@ typedef struct s_game_state
 {
 	t_player			*player;
 	t_map				*map;
-	t_collectible_model	*collectibles;
+	t_collectible_state	*collectibles;
 	t_mlx_context		*mlx;
 	t_renderer			*renderer;
 	int					move_count;
@@ -46,6 +46,8 @@ typedef struct s_game_state
 
 t_game_state			*init_game_state(void);
 t_game_state			*create_game(void);
+t_player				*create_player(t_map *map);
+t_collectible_state		*create_collect_state(t_map *map);
 void					free_game_state(t_game_state *game);
 int						load_game_assets(t_game_state *game,
 							const char *map_path);
