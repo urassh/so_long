@@ -6,25 +6,19 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 22:50:00 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/24 22:50:00 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/24 23:31:19 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "player_controller.h"
 #include "collectible_state.h"
 #include "constants.h"
 #include "game_state.h"
 #include "map.h"
 #include "player.h"
+#include "player_controller.h"
 #include "vector2d.h"
 #include <stdio.h>
 
-/**
- * プレイヤーを指定された方向に移動させる
- * @param game ゲーム状態
- * @param direction 移動方向
- * @return 成功時0、失敗時1
- */
 int	move_player(t_game_state *game, t_move_direction direction)
 {
 	t_vector2d	current_pos;
@@ -47,13 +41,6 @@ int	move_player(t_game_state *game, t_move_direction direction)
 	return (try_move_player(game, new_x, new_y));
 }
 
-/**
- * プレイヤーを指定された座標に移動を試行する
- * @param game ゲーム状態
- * @param new_x 新しいX座標
- * @param new_y 新しいY座標
- * @return 成功時0、失敗時1
- */
 int	try_move_player(t_game_state *game, int new_x, int new_y)
 {
 	if (!is_valid_position(game, new_x, new_y))
@@ -67,13 +54,6 @@ int	try_move_player(t_game_state *game, int new_x, int new_y)
 	return (0);
 }
 
-/**
- * 指定された座標が有効な移動先かどうかをチェック
- * @param game ゲーム状態
- * @param x X座標
- * @param y Y座標
- * @return 有効な場合1、無効な場合0
- */
 int	is_valid_position(t_game_state *game, int x, int y)
 {
 	if (!game || !game->map || !game->map->grid)
@@ -85,12 +65,6 @@ int	is_valid_position(t_game_state *game, int x, int y)
 	return (1);
 }
 
-/**
- * コレクティブルアイテムの処理
- * @param game ゲーム状態
- * @param x X座標
- * @param y Y座標
- */
 void	handle_collectible(t_game_state *game, int x, int y)
 {
 	t_vector2d	pos;
@@ -106,12 +80,6 @@ void	handle_collectible(t_game_state *game, int x, int y)
 	}
 }
 
-/**
- * 出口の処理
- * @param game ゲーム状態
- * @param x X座標
- * @param y Y座標
- */
 void	handle_exit(t_game_state *game, int x, int y)
 {
 	if (!game || !game->map || !game->collectibles)

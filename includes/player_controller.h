@@ -24,7 +24,6 @@ typedef enum e_move_direction
 	MOVE_RIGHT = 3
 }	t_move_direction;
 
-/* Player controller functions */
 int		move_player(t_game_state *game, t_move_direction direction);
 int		try_move_player(t_game_state *game, int new_x, int new_y);
 int		is_valid_position(t_game_state *game, int x, int y);
