@@ -6,17 +6,17 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 13:34:00 by surayama          #+#    #+#             */
-/*   Updated: 2025/09/24 23:51:27 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/27 18:27:38 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "controller.h"
 #include "events.h"
 #include "game_state.h"
+#include "libft.h"
 #include "mlx.h"
 #include "so_long.h"
 #include "utils.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 int	main(void)
@@ -26,7 +26,7 @@ int	main(void)
 	game = create_game();
 	if (!game || start_game(game) != 0)
 	{
-		printf("Error: Failed to initialize game loop\n");
+		ft_putstr("Error: Failed to initialize game loop\n");
 		free_game_state(game);
 		return (1);
 	}

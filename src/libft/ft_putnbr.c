@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event_setup.c                                      :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/17 00:00:00 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/27 18:44:48 by urassh           ###   ########.fr       */
+/*   Created: 2025/09/27 18:30:52 by urassh            #+#    #+#             */
+/*   Updated: 2025/09/27 18:41:22 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "events.h"
 #include "libft.h"
-#include "mlx.h"
-#include "so_long.h"
+#include <limits.h>
 
-int	setup_event_handlers(t_game_state *game)
+static void	ft_putchar(char c);
+
+void	ft_putnbr(int n)
 {
-	if (!game || !game->mlx || !game->mlx->win_ptr)
+	int	sign;
+
+	if (n == INT_MIN)
+		return (ft_putstr("-2147483648"));
+	sign = 1;
+	if (n < 0)
 	{
-		ft_putstr("Error: Invalid game state for event setup\n");
-		return (ERROR);
+		sign *= -1;
+		ft_putstr("-");
 	}
-	mlx_key_hook(game->mlx->win_ptr, on_key_down, game);
-	mlx_hook(game->mlx->win_ptr, ON_DESTROY, 0, on_destroy, game);
-	return (0);
+	if (n >= 10)
+		ft_putnbr(n / 10);
+	ft_putchar((n % 10) + '0');
+}
+
+static void	ft_putchar(char c)
+{
+	write(1, &c, 1);
 }

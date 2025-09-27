@@ -26,7 +26,8 @@ endif
 SRCS = $(SRC_DIR)/main.c \
 	   $(SRC_DIR)/libft/ft_get_next_line.c \
 	   $(SRC_DIR)/libft/ft_calloc.c \
-	   $(SRC_DIR)/libft/ft_putstr. \
+	   $(SRC_DIR)/libft/ft_putstr.c \
+	   $(SRC_DIR)/libft/ft_putnbr.c \
 	   $(SRC_DIR)/libft/ft_strcmp.c \
 	   $(SRC_DIR)/libft/ft_strdup.c \
 	   $(SRC_DIR)/libft/ft_strchr.c \

@@ -6,7 +6,7 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 17:23:22 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/27 18:25:47 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/27 18:41:44 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define BUFFER_SIZE 1024
 
 void	ft_putstr(const char *str);
+void	ft_putnbr(int n);
 int		ft_strlen(const char *str);
 void	*ft_calloc(size_t nmemb, size_t size);
 int		ft_strcmp(const char *a, const char *b);

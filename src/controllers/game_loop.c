@@ -6,27 +6,27 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 00:00:00 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/24 23:49:40 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/27 18:28:06 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "controller.h"
 #include "events.h"
 #include "game_state.h"
+#include "libft.h"
 #include "mlx.h"
 #include "renderer.h"
-#include <stdio.h>
 #include <unistd.h>
 
 int	start_game(t_game_state *game)
 {
 	if (!game)
 		return (-1);
-	printf("Game loop initialized\n");
+	ft_putstr("Game loop initialized\n");
 	if (game->renderer && game->map)
 	{
 		render_game(game);
-		printf("Initial map rendered\n");
+		ft_putstr("Initial map rendered\n");
 	}
 	return (0);
 }

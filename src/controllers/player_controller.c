@@ -6,18 +6,18 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 22:50:00 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/24 23:31:19 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/27 18:44:28 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "collectible_state.h"
 #include "constants.h"
 #include "game_state.h"
+#include "libft.h"
 #include "map.h"
 #include "player.h"
 #include "player_controller.h"
 #include "vector2d.h"
-#include <stdio.h>
 
 int	move_player(t_game_state *game, t_move_direction direction)
 {
@@ -76,7 +76,9 @@ void	handle_collectible(t_game_state *game, int x, int y)
 	if (collect_item_at(game->collectibles, pos) == 0)
 	{
 		increment_collect(game->player);
-		printf("Collected item! Total: %d\n", get_collect_count(game->player));
+		ft_putstr("Collected item! Total: ");
+		ft_putnbr(get_collect_count(game->player));
+		ft_putstr("\n");
 	}
 }
 
@@ -92,8 +94,10 @@ void	handle_exit(t_game_state *game, int x, int y)
 		}
 		else
 		{
-			printf("Collect all items first! Remaining: %d\n",
-				game->collectibles->count - game->collectibles->obtained_count);
+			ft_putstr("Collect all items first! Remaining: ");
+			ft_putnbr(game->collectibles->count
+				- game->collectibles->obtained_count);
+			ft_putstr("\n");
 		}
 	}
 }
