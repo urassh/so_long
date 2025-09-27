@@ -6,7 +6,7 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 18:30:52 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/27 18:41:22 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/27 18:49:20 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,11 @@ static void	ft_putchar(char c);
 
 void	ft_putnbr(int n)
 {
-	int	sign;
-
 	if (n == INT_MIN)
 		return (ft_putstr("-2147483648"));
-	sign = 1;
 	if (n < 0)
 	{
-		sign *= -1;
+		n *= -1;
 		ft_putstr("-");
 	}
 	if (n >= 10)
