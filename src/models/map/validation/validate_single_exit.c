@@ -34,6 +34,6 @@ int	validate_map_single_exit(t_map *map)
 	}
 	if (exit_count == 1)
 		return (OK);
-	ft_putstr("ERROR: map data should be single exit\n");
+	ft_putstr("Error: map data should be single exit\n");
 	return (ERROR);
 }

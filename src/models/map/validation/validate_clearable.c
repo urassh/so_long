@@ -103,6 +103,6 @@ static int	check_collectibles_and_exit(t_map *original_map, t_map *filled_map)
 
 static int	error_clearable(void)
 {
-	ft_putstr("ERROR: map data should be clearable game\n");
+	ft_putstr("Error: map data should be clearable game\n");
 	return (ERROR);
 }

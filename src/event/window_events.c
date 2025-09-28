@@ -30,3 +30,12 @@ int	on_destroy(t_game_state *game)
 	exit(0);
 	return (0);
 }
+
+int	on_expose(t_game_state *game)
+{
+	if (!game || !game->renderer)
+		return (0);
+	game->state_changed = true;
+	render_game(game);
+	return (0);
+}

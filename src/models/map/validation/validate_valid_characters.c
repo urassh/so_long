@@ -28,7 +28,7 @@ int	validate_map_valid_characters(t_map *map)
 				&& map->grid[i][j] != COLLECT && map->grid[i][j] != EXIT
 				&& map->grid[i][j] != PLAYER)
 			{
-				ft_putstr("ERROR: map data should be valid characters");
+				ft_putstr("Error: map data should be valid characters");
 				ft_putstr("(0, 1, C, E, P)\n");
 				return (ERROR);
 			}

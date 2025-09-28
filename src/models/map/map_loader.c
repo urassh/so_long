@@ -53,7 +53,7 @@ static int	get_map_line_count(const char *path)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_putstr("ERROR: map data was not found\n");
+		ft_putstr("Error: map data was not found\n");
 		return (-1);
 	}
 	line_count = 0;
@@ -68,7 +68,7 @@ static int	get_map_line_count(const char *path)
 	close(fd);
 	ft_get_next_line(-1);
 	if (line_count <= 0)
-		ft_putstr("ERROR: map data was empty\n");
+		ft_putstr("Error: map data was empty\n");
 	return (line_count);
 }
 

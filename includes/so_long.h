@@ -51,6 +51,7 @@
 # define ON_FOCUS_IN            9
 # define ON_FOCUS_OUT           10
 # define ON_EXPOSE              12
+# define ON_CONFIGURE_NOTIFY    22
 # define ON_DESTROY             17
 
 /* X11 Event Masks */

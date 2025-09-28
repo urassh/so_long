@@ -34,6 +34,6 @@ int	validate_map_single_player(t_map *map)
 	}
 	if (player_count == 1)
 		return (OK);
-	ft_putstr("ERROR: map data should be single player\n");
+	ft_putstr("Error: map data should be single player\n");
 	return (ERROR);
 }

@@ -25,7 +25,7 @@ int	main(int argc, const char **argv)
 
 	if (argc != 2)
 	{
-		ft_putstr("ERROR: invalid arguments.\n");
+		ft_putstr("Error: invalid arguments.\n");
 		ft_putstr("example: ./so_long assets/map/map.ber\n");
 		exit(1);
 	}

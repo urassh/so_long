@@ -48,6 +48,6 @@ static int	all_walls(const char *row)
 
 static int	error_surrounded_by_walls(void)
 {
-	ft_putstr("ERROR: map data should be surrounded by walls\n");
+	ft_putstr("Error: map data should be surrounded by walls\n");
 	return (ERROR);
 }

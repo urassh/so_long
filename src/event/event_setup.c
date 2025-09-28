@@ -24,5 +24,6 @@ int	setup_event_handlers(t_game_state *game)
 	}
 	mlx_key_hook(game->mlx->win_ptr, on_key_down, game);
 	mlx_hook(game->mlx->win_ptr, ON_DESTROY, 0, on_destroy, game);
+	mlx_expose_hook(game->mlx->win_ptr, on_expose, game);
 	return (0);
 }

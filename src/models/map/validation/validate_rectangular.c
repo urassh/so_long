@@ -22,7 +22,7 @@ int	validate_map_rectangular(t_map *map)
 	{
 		if (ft_strlen(map->grid[i]) != map->width)
 		{
-			ft_putstr("ERROR: map data should be rectangular\n");
+			ft_putstr("Error: map data should be rectangular\n");
 			return (ERROR);
 		}
 		i++;
