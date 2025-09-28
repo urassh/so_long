@@ -6,13 +6,13 @@ SRC_DIR = src
 OBJ_DIR = obj
 MLX_DIR = minilibx
 
-HEADERS = 
+HEADERS =
 
 CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -I$(INCLUDES_DIR) -I$(MLX_DIR)
 
 LIBFLAGS_MACOS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
-LIBFLAGS_LINUX = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lz
+LIBFLAGS_LINUX = -L$(MLX_DIR) -lmlx_Linux -lXext -lX11
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Darwin)

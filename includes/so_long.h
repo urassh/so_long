@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: surayama <surayama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:50:38 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/10 15:50:40 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/28 18:28:30 by surayama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,41 @@
 /*                               KEY CODES                                   */
 /* ************************************************************************** */
 
-/* Movement Keys */
+# ifdef __APPLE__
 # define KEY_W          13
-# define KEY_A          0
-# define KEY_S          1
-# define KEY_D          2
-# define KEY_UP         126
-# define KEY_DOWN       125
-# define KEY_LEFT       123
-# define KEY_RIGHT      124
+#   define KEY_A          0
+#   define KEY_S          1
+#   define KEY_D          2
+#   define KEY_UP         126
+#   define KEY_DOWN       125
+#   define KEY_LEFT       123
+#   define KEY_RIGHT      124
 
-/* Control Keys */
-# define KEY_ESC        53
-# define KEY_SPACE      49
-# define KEY_ENTER      36
-# define KEY_TAB        48
+    /* Control Keys (macOS) */
+#   define KEY_ESC        53
+#   define KEY_SPACE      49
+#   define KEY_ENTER      36
+#   define KEY_TAB        48
+
+# else
+#   include <X11/keysym.h>
+
+    /* Movement Keys (Linux / X11) */
+#   define KEY_W          XK_w
+#   define KEY_A          XK_a
+#   define KEY_S          XK_s
+#   define KEY_D          XK_d
+#   define KEY_UP         XK_Up
+#   define KEY_DOWN       XK_Down
+#   define KEY_LEFT       XK_Left
+#   define KEY_RIGHT      XK_Right
+
+    /* Control Keys (Linux / X11) */
+#   define KEY_ESC        XK_Escape
+#   define KEY_SPACE      XK_space
+#   define KEY_ENTER      XK_Return
+#   define KEY_TAB        XK_Tab
+# endif
 
 /* ************************************************************************** */
 /*                              EVENT CODES                                  */
