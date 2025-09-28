@@ -17,7 +17,7 @@
 #include <stdlib.h>
 
 int	on_destroy(t_game_state *game)
-{	
+{
 	if (game)
 	{
 		set_game_status(game, GAME_QUIT);

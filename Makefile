@@ -10,12 +10,10 @@ HEADERS =
 
 CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -I$(INCLUDES_DIR) -I$(MLX_DIR)
-# macOS用のフラグ
+
 LIBFLAGS_MACOS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
-# Linux用のフラグ
 LIBFLAGS_LINUX = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lz
 
-# OSを検出
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Darwin)
 	LIBFLAGS = $(LIBFLAGS_MACOS)

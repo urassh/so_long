@@ -6,27 +6,24 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 00:00:00 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/16 23:14:27 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/28 10:30:38 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RENDERER_H
 # define RENDERER_H
 
+# include "collectible_state.h"
 # include "constants.h"
+# include "game_state.h"
+# include "map.h"
+# include "player.h"
 # include "vector2d.h"
-
-/* Texture file paths */
 # define WALL_TEXTURE_PATH "assets/textures/wall.xpm"
 # define EMPTY_TEXTURE_PATH "assets/textures/empty.xpm"
 # define PLAYER_TEXTURE_PATH "assets/textures/player.xpm"
 # define COLLECT_TEXTURE_PATH "assets/textures/collect.xpm"
 # define EXIT_TEXTURE_PATH "assets/textures/exit.xpm"
-
-struct s_map;
-struct s_game_state;
-struct s_player;
-struct s_collectible_state;
 
 typedef struct s_mlx_context
 {
@@ -64,16 +61,14 @@ void				free_textures(t_renderer *renderer);
 void				free_texture(void *mlx_ptr, t_texture *texture);
 void				clear_screen(t_renderer *renderer);
 void				present_screen(t_renderer *renderer);
-
 void				render_tile(t_renderer *r, char tile, int x, int y);
-void				render_map(t_renderer *renderer, struct s_map *map);
-void				render_player(t_renderer *renderer, struct s_player *player);
+void				render_map(t_renderer *renderer, t_map *map);
+void				render_player(t_renderer *renderer, t_player *player);
 void				render_collectibles(t_renderer *renderer,
-						struct s_collectible_state *state);
-void				render_exit(t_renderer *renderer, struct s_map *map);
+						t_collectible_state *state);
+void				render_exit(t_renderer *renderer, t_map *map);
 t_texture			*get_texture_for_tile(t_renderer *r, char tile);
-void				render_game(struct s_game_state *game);
-
+void				render_game(t_game_state *game);
 t_texture			*init_texture(void);
 
 #endif
