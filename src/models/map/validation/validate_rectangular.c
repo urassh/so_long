@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "map_validation.h"
 
 int	validate_map_rectangular(t_map *map)
@@ -20,7 +21,10 @@ int	validate_map_rectangular(t_map *map)
 	while (i < map->height)
 	{
 		if (ft_strlen(map->grid[i]) != map->width)
+		{
+			ft_putstr("ERROR: map data should be rectangular\n");
 			return (ERROR);
+		}
 		i++;
 	}
 	return (OK);

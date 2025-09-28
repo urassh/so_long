@@ -27,5 +27,6 @@ int	validate_map_collectibles_exist(t_map *map)
 	}
 	if (collectible_count >= 1)
 		return (OK);
+	ft_putstr("ERROR: map data should be exists collectibles\n");
 	return (ERROR);
 }

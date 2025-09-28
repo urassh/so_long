@@ -15,6 +15,7 @@
 static void	find_player_position(t_map *map, int *player_x, int *player_y);
 static void	flood_fill(t_map *map, int x, int y);
 static int	check_collectibles_and_exit(t_map *original_map, t_map *filled_map);
+static int	error_clearable(void);
 
 int	validate_map_clearable(t_map *map)
 {
@@ -23,19 +24,19 @@ int	validate_map_clearable(t_map *map)
 	int		player_y;
 	int		result;
 
-	if (!map)
-		return (ERROR);
 	duplicate = duplicate_map(map);
 	if (!duplicate)
-		return (ERROR);
+		return (error_clearable());
 	find_player_position(map, &player_x, &player_y);
 	if (player_x == -1 || player_y == -1)
 	{
 		free_map(duplicate);
-		return (ERROR);
+		return (error_clearable());
 	}
 	flood_fill(duplicate, player_x, player_y);
 	result = check_collectibles_and_exit(map, duplicate);
+	if (result == ERROR)
+		return (error_clearable());
 	free_map(duplicate);
 	return (result);
 }
@@ -98,4 +99,10 @@ static int	check_collectibles_and_exit(t_map *original_map, t_map *filled_map)
 		y++;
 	}
 	return (OK);
+}
+
+static int	error_clearable(void)
+{
+	ft_putstr("ERROR: map data should be clearable game\n");
+	return (ERROR);
 }

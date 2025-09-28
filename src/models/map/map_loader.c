@@ -6,7 +6,7 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 00:00:00 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/15 00:00:00 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/27 19:01:53 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ static char	**allocate_and_load_grid(const char *path, int line_count)
 	if (fd < 0)
 	{
 		free(grid);
+		ft_putstr("ERROR: map data was not found\n");
 		return (NULL);
 	}
 	grid = load_grid(fd, grid, line_count);

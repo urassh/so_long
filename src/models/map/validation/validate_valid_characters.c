@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "map_validation.h"
 
-// 7. map.hに定義されていない文字が含まれていない事
-// マップ内の全ての文字が有効（'0', '1', 'C', 'E', 'P'）であることを確認
 int	validate_map_valid_characters(t_map *map)
 {
 	int	i;
@@ -28,7 +27,11 @@ int	validate_map_valid_characters(t_map *map)
 			if (map->grid[i][j] != EMPTY && map->grid[i][j] != WALL
 				&& map->grid[i][j] != COLLECT && map->grid[i][j] != EXIT
 				&& map->grid[i][j] != PLAYER)
+			{
+				ft_putstr("ERROR: map data should be valid characters");
+				ft_putstr("(0, 1, C, E, P)\n");
 				return (ERROR);
+			}
 			j++;
 		}
 		i++;
