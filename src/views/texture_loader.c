@@ -48,25 +48,25 @@ static int	allocate_textures(t_renderer *renderer)
 static int	load_all_texture_files(t_renderer *renderer)
 {
 	renderer->wall_texture = load_texture_from_file(renderer->mlx->mlx_ptr,
-			"assets/textures/wall.xpm");
+			WALL_TEXTURE_PATH);
 	if (!renderer->wall_texture)
-		return (print_texture_error("assets/textures/wall.xpm"));
+		return (print_texture_error(WALL_TEXTURE_PATH));
 	renderer->empty_texture = load_texture_from_file(renderer->mlx->mlx_ptr,
-			"assets/textures/empty.xpm");
+			EMPTY_TEXTURE_PATH);
 	if (!renderer->empty_texture)
-		return (print_texture_error("assets/textures/empty.xpm"));
+		return (print_texture_error(EMPTY_TEXTURE_PATH));
 	renderer->player_texture = load_texture_from_file(renderer->mlx->mlx_ptr,
-			"assets/textures/player.xpm");
+			PLAYER_TEXTURE_PATH);
 	if (!renderer->player_texture)
-		return (print_texture_error("assets/textures/player.xpm"));
+		return (print_texture_error(PLAYER_TEXTURE_PATH));
 	renderer->collect_texture = load_texture_from_file(renderer->mlx->mlx_ptr,
-			"assets/textures/collect.xpm");
+			COLLECT_TEXTURE_PATH);
 	if (!renderer->collect_texture)
-		return (print_texture_error("assets/textures/collect.xpm"));
+		return (print_texture_error(COLLECT_TEXTURE_PATH));
 	renderer->exit_texture = load_texture_from_file(renderer->mlx->mlx_ptr,
-			"assets/textures/exit.xpm");
+			EXIT_TEXTURE_PATH);
 	if (!renderer->exit_texture)
-		return (print_texture_error("assets/textures/exit.xpm"));
+		return (print_texture_error(EXIT_TEXTURE_PATH));
 	return (OK);
 }
 

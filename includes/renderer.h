@@ -16,6 +16,13 @@
 # include "constants.h"
 # include "vector2d.h"
 
+/* Texture file paths */
+# define WALL_TEXTURE_PATH "assets/textures/wall.xpm"
+# define EMPTY_TEXTURE_PATH "assets/textures/empty.xpm"
+# define PLAYER_TEXTURE_PATH "assets/textures/player.xpm"
+# define COLLECT_TEXTURE_PATH "assets/textures/collect.xpm"
+# define EXIT_TEXTURE_PATH "assets/textures/exit.xpm"
+
 struct s_map;
 struct s_game_state;
 struct s_player;

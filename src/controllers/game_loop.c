@@ -22,12 +22,26 @@ int	start_game(t_game_state *game)
 {
 	if (!game)
 		return (-1);
-	ft_putstr("Game loop initialized\n");
 	if (game->renderer && game->map)
 	{
 		render_game(game);
-		ft_putstr("Initial map rendered\n");
 	}
+	ft_putstr("==========================================\n");
+	ft_putstr("           GAME START!\n");
+	ft_putstr("==========================================\n");
+	ft_putstr("Controls:\n");
+	ft_putstr("  W/↑    - Move Up\n");
+	ft_putstr("  A/←    - Move Left\n");
+	ft_putstr("  S/↓    - Move Down\n");
+	ft_putstr("  D/→    - Move Right\n");
+	ft_putstr("  ESC     - Exit Game\n");
+	ft_putstr("\n");
+	ft_putstr("Game Rules:\n");
+	ft_putstr("  - Collect all collectibles on the map\n");
+	ft_putstr("  - Reach the exit after collecting all items\n");
+	ft_putstr("\n");
+	ft_putstr("Good luck! \n");
+	ft_putstr("==========================================\n");
 	return (0);
 }
 

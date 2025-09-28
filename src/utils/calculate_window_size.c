@@ -14,11 +14,6 @@
 #include "map.h"
 #include "vector2d.h"
 
-/**
- * @brief マップサイズに基づいてウィンドウサイズを計算
- * @param map マップモデル
- * @return ウィンドウサイズ（幅と高さ）をt_vector2dで返す
- */
 t_vector2d	calculate_window_size(const t_map *map)
 {
 	t_vector2d	window_size;
@@ -34,13 +29,6 @@ t_vector2d	calculate_window_size(const t_map *map)
 	return (window_size);
 }
 
-/**
- * @brief ウィンドウサイズを直接幅と高さで取得
- * @param map マップモデル
- * @param width 計算された幅を格納するポインタ
- * @param height 計算された高さを格納するポインタ
- * @return 成功時は0、エラー時は-1
- */
 int	get_window_dimensions(const t_map *map, int *width, int *height)
 {
 	if (!map || !width || !height)
