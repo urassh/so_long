@@ -12,12 +12,14 @@
 
 #include "mlx.h"
 #include "renderer.h"
+#include "libft.h"
 #include <stdlib.h>
 
 static int			load_all_texture_files(t_renderer *renderer);
 static t_texture	*load_texture_from_file(void *mlx_ptr,
 						const char *file_path);
 static int			allocate_textures(t_renderer *renderer);
+static int			print_texture_error(const char *file_path);
 
 int	load_textures(t_renderer *renderer)
 {
@@ -47,18 +49,24 @@ static int	load_all_texture_files(t_renderer *renderer)
 {
 	renderer->wall_texture = load_texture_from_file(renderer->mlx->mlx_ptr,
 			"assets/textures/wall.xpm");
+	if (!renderer->wall_texture)
+		return (print_texture_error("assets/textures/wall.xpm"));
 	renderer->empty_texture = load_texture_from_file(renderer->mlx->mlx_ptr,
 			"assets/textures/empty.xpm");
+	if (!renderer->empty_texture)
+		return (print_texture_error("assets/textures/empty.xpm"));
 	renderer->player_texture = load_texture_from_file(renderer->mlx->mlx_ptr,
 			"assets/textures/player.xpm");
+	if (!renderer->player_texture)
+		return (print_texture_error("assets/textures/player.xpm"));
 	renderer->collect_texture = load_texture_from_file(renderer->mlx->mlx_ptr,
 			"assets/textures/collect.xpm");
+	if (!renderer->collect_texture)
+		return (print_texture_error("assets/textures/collect.xpm"));
 	renderer->exit_texture = load_texture_from_file(renderer->mlx->mlx_ptr,
 			"assets/textures/exit.xpm");
-	if (!renderer->wall_texture || !renderer->empty_texture
-		|| !renderer->player_texture || !renderer->collect_texture
-		|| !renderer->exit_texture)
-		return (ERROR);
+	if (!renderer->exit_texture)
+		return (print_texture_error("assets/textures/exit.xpm"));
 	return (OK);
 }
 
@@ -82,4 +90,12 @@ static t_texture	*load_texture_from_file(void *mlx_ptr,
 	texture->data = mlx_get_data_addr(texture->img_ptr,
 			&texture->bits_per_pixel, &texture->line_length, &texture->endian);
 	return (texture);
+}
+
+static int	print_texture_error(const char *file_path)
+{
+	ft_putstr("Error: Failed to load texture file: ");
+	ft_putstr(file_path);
+	ft_putstr("\n");
+	return (ERROR);
 }
