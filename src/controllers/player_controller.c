@@ -47,6 +47,9 @@ int	try_move_player(t_game_state *game, int new_x, int new_y)
 		return (1);
 	set_player_position(game->player, new_x, new_y);
 	increment_move_count(game);
+	ft_putstr("Moves: ");
+	ft_putnbr(get_move_count(game));
+	ft_putstr("\n");
 	handle_collectible(game, new_x, new_y);
 	handle_exit(game, new_x, new_y);
 	set_player_state(game->player, PLAYER_MOVING);

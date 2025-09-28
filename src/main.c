@@ -36,7 +36,12 @@ int	main(int argc, const char **argv)
 		exit(1);
 	}
 	game->on_clear = on_clear;
-	mlx_key_hook(game->mlx->win_ptr, on_key_down, game);
+	if (setup_event_handlers(game) != 0)
+	{
+		ft_putstr("Error: Failed to setup event handlers\n");
+		free_game_state(game);
+		exit(1);
+	}
 	mlx_loop_hook(game->mlx->mlx_ptr, (int (*)(void *))update_game, game);
 	mlx_loop(game->mlx->mlx_ptr);
 	return (0);

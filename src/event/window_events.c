@@ -13,22 +13,26 @@
 #include "controller.h"
 #include "events.h"
 #include "mlx.h"
-#include <stdio.h>
+#include "libft.h"
 #include <stdlib.h>
 
 int	on_destroy(t_game_state *game)
-{
-	if (!game)
-		return (0);
-	set_game_status(game, GAME_QUIT);
-	if (game->mlx && game->mlx->win_ptr)
+{	
+	if (game)
 	{
-		mlx_destroy_window(game->mlx->mlx_ptr, game->mlx->win_ptr);
-		game->mlx->win_ptr = NULL;
+		set_game_status(game, GAME_QUIT);
+		if (game->mlx && game->mlx->win_ptr)
+		{
+			mlx_destroy_window(game->mlx->mlx_ptr, game->mlx->win_ptr);
+			game->mlx->win_ptr = NULL;
+		}
+		free_game_state(game);
 	}
-	free_game_state(game);
+	ft_putstr("==========================================\n");
+	ft_putstr("           GAME CLOSED\n");
+	ft_putstr("        Thank you for playing!\n");
+	ft_putstr("==========================================\n");
 	exit(0);
-	return (0);
 }
 
 int	on_expose(t_game_state *game)

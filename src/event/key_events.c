@@ -14,7 +14,6 @@
 #include "player_controller.h"
 #include "so_long.h"
 #include "vector2d.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 int	on_key_down(int key_code, void *param)
