@@ -6,7 +6,7 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 22:07:03 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/24 22:32:08 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/28 09:06:13 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ static int		create_mlx(t_game_state *game);
 static int		create_window(t_game_state *game);
 static int		create_game_state(t_game_state *game);
 
-t_game_state	*create_game(void)
+t_game_state	*create_game(const char *map_path)
 {
 	t_game_state	*game;
 
 	game = init_game_state();
 	if (!game)
 		return (NULL);
-	if (load_game_assets(game, "assets/map/map") == ERROR)
+	if (load_game_assets(game, map_path) == ERROR)
 		return (failure_game(game));
 	if (create_mlx(game) == ERROR)
 		return (failure_game(game));

@@ -6,7 +6,7 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 00:00:00 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/27 19:01:53 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/28 09:22:16 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,10 @@ static int	get_map_line_count(const char *path)
 
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
+	{
+		ft_putstr("ERROR: map data was not found\n");
 		return (-1);
+	}
 	line_count = 0;
 	line = ft_get_next_line(fd);
 	while (line != NULL)
@@ -64,6 +67,8 @@ static int	get_map_line_count(const char *path)
 	}
 	close(fd);
 	ft_get_next_line(-1);
+	if (line_count <= 0)
+		ft_putstr("ERROR: map data was empty\n");
 	return (line_count);
 }
 
@@ -79,7 +84,6 @@ static char	**allocate_and_load_grid(const char *path, int line_count)
 	if (fd < 0)
 	{
 		free(grid);
-		ft_putstr("ERROR: map data was not found\n");
 		return (NULL);
 	}
 	grid = load_grid(fd, grid, line_count);

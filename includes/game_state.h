@@ -6,7 +6,7 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 00:00:00 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/24 23:51:19 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/28 09:05:39 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_game_state
 }							t_game_state;
 
 t_game_state				*init_game_state(void);
-t_game_state				*create_game(void);
+t_game_state				*create_game(const char *map_path);
 t_player					*create_player(t_map *map);
 t_collectible_state			*create_collect_state(t_map *map);
 void						free_game_state(t_game_state *game);
