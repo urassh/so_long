@@ -12,6 +12,7 @@
 
 #include "game_state.h"
 #include "mlx.h"
+#include "renderer.h"
 #include "utils.h"
 
 static void		*failure_game(t_game_state *game);

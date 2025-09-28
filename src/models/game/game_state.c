@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "game_state.h"
+#include "renderer.h"
 #include <stdlib.h>
 #include <sys/time.h>
 

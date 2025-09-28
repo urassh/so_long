@@ -14,6 +14,7 @@
 #include "libft.h"
 #include "mlx.h"
 #include "player.h"
+#include "renderer.h"
 #include <stdlib.h>
 #include <unistd.h>
 

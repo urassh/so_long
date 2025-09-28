@@ -14,6 +14,7 @@
 #include "events.h"
 #include "mlx.h"
 #include "libft.h"
+#include "renderer.h"
 #include <stdlib.h>
 
 int	on_destroy(t_game_state *game)

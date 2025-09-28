@@ -22,6 +22,7 @@
 
 typedef struct s_mlx_context	t_mlx_context;
 typedef struct s_renderer		t_renderer;
+typedef struct s_game_state		t_game_state;
 
 typedef void					(*t_game_event_handler)(t_game_state *game);
 

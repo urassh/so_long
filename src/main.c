@@ -15,6 +15,7 @@
 #include "game_state.h"
 #include "libft.h"
 #include "mlx.h"
+#include "renderer.h"
 #include "so_long.h"
 #include "utils.h"
 #include <stdlib.h>

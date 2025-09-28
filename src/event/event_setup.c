@@ -13,6 +13,7 @@
 #include "events.h"
 #include "libft.h"
 #include "mlx.h"
+#include "renderer.h"
 #include "so_long.h"
 
 int	setup_event_handlers(t_game_state *game)

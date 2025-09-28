@@ -4,7 +4,7 @@ ASSETS_DIR = assets
 INCLUDES_DIR = includes
 SRC_DIR = src
 OBJ_DIR = obj
-MLX_DIR = minilibx_opengl_20191021
+MLX_DIR = minilibx
 
 HEADERS = 
 
