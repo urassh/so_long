@@ -32,7 +32,6 @@ int	main(int argc, const char **argv)
 	game = create_game(argv[1]);
 	if (!game || start_game(game) != 0)
 	{
-		ft_putstr("ERROR: Failed to initialize game loop\n");
 		free_game_state(game);
 		exit(1);
 	}
