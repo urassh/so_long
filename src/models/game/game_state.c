@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_state.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: surayama <surayama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 00:00:00 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/24 23:51:14 by urassh           ###   ########.fr       */
+/*   Updated: 2025/09/29 15:23:21 by surayama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 #include "mlx.h"
 #include <stdlib.h>
 #include <sys/time.h>
-
-int	mlx_destroy_display(void *mlx_ptr);
 
 t_game_state	*init_game_state(void)
 {
@@ -57,14 +55,12 @@ void	free_game_state(t_game_state *game)
 		if (game->mlx->win_ptr)
 			mlx_destroy_window(game->mlx->mlx_ptr, game->mlx->win_ptr);
 		if (game->mlx->mlx_ptr)
+		{
 			mlx_destroy_display(game->mlx->mlx_ptr);
+			free(game->mlx->mlx_ptr);
+		}
 		free(game->mlx);
 	}
-	game->player = NULL;
-	game->map = NULL;
-	game->collectibles = NULL;
-	game->mlx = NULL;
-	game->renderer = NULL;
 	free(game);
 }
 
