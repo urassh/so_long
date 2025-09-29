@@ -12,8 +12,11 @@
 
 #include "game_state.h"
 #include "renderer.h"
+#include "mlx.h"
 #include <stdlib.h>
 #include <sys/time.h>
+
+int	mlx_destroy_display(void *mlx_ptr);
 
 t_game_state	*init_game_state(void)
 {
@@ -50,7 +53,13 @@ void	free_game_state(t_game_state *game)
 	if (game->renderer)
 		free_renderer(game->renderer);
 	if (game->mlx)
+	{
+		if (game->mlx->win_ptr)
+			mlx_destroy_window(game->mlx->mlx_ptr, game->mlx->win_ptr);
+		if (game->mlx->mlx_ptr)
+			mlx_destroy_display(game->mlx->mlx_ptr);
 		free(game->mlx);
+	}
 	game->player = NULL;
 	game->map = NULL;
 	game->collectibles = NULL;

@@ -26,9 +26,6 @@ int	load_game_assets(t_game_state *game, const char *map_path)
 		game->map = NULL;
 		return (ERROR);
 	}
-	game->collectibles = init_collectible_state();
-	if (!game->collectibles)
-		return (ERROR);
 	mark_state_changed(game);
 	return (OK);
 }
