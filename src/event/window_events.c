@@ -22,11 +22,6 @@ int	on_destroy(t_game_state *game)
 	if (game)
 	{
 		set_game_status(game, GAME_QUIT);
-		if (game->mlx && game->mlx->win_ptr)
-		{
-			mlx_destroy_window(game->mlx->mlx_ptr, game->mlx->win_ptr);
-			game->mlx->win_ptr = NULL;
-		}
 		free_game_state(game);
 	}
 	ft_putstr("==========================================\n");
