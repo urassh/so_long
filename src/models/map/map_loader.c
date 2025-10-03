@@ -6,7 +6,7 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 00:00:00 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/28 09:22:16 by urassh           ###   ########.fr       */
+/*   Updated: 2025/10/03 12:02:11 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 static int	get_map_line_count(const char *path);
 static char	**allocate_and_load_grid(const char *path, int line_count);
 static char	**load_grid(int fd, char **grid, int line_count);
+static int	map_line_error(const char *error_message, char *line);
 
 t_map	*load_map(const char *path)
 {
@@ -52,13 +53,10 @@ static int	get_map_line_count(const char *path)
 
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-	{
-		ft_putstr("Error: map data was not found\n");
-		return (-1);
-	}
+		return (map_line_error("Error: map data was not found\n", NULL));
 	line_count = 0;
 	line = ft_get_next_line(fd);
-	while (line != NULL)
+	while (line != NULL && ft_strlen(line) <= MAX_WIDTH)
 	{
 		if (ft_strcmp(line, "\n") != 0)
 			line_count++;
@@ -67,8 +65,12 @@ static int	get_map_line_count(const char *path)
 	}
 	close(fd);
 	ft_get_next_line(-1);
+	if (ft_strlen(line) > MAX_WIDTH)
+		return (map_line_error("Error: map width was too long!\n", line));
+	if (line_count > MAX_HEIGHT)
+		return (map_line_error("Error: map height was too long!\n", line));
 	if (line_count <= 0)
-		ft_putstr("Error: map data was empty\n");
+		return (map_line_error("Error: map data was empty\n", NULL));
 	return (line_count);
 }
 
@@ -115,4 +117,15 @@ static char	**load_grid(int fd, char **grid, int line_count)
 	if (line != NULL)
 		free(line);
 	return (grid);
+}
+
+static int	map_line_error(const char *error_message, char *line)
+{
+	if (line)
+	{
+		free(line);
+		line = NULL;
+	}
+	ft_putstr(error_message);
+	return (-1);
 }
