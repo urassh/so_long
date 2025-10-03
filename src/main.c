@@ -27,7 +27,7 @@ int	main(int argc, const char **argv)
 	if (argc != 2)
 	{
 		ft_putstr("Error: invalid arguments.\n");
-		ft_putstr("example: ./so_long assets/map/map.ber\n");
+		ft_putstr("example: ./so_long assets/maps/map.ber\n");
 		exit(1);
 	}
 	game = create_game(argv[1]);
