@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "map_validation.h"
 
 int	validate_map_single_exit(t_map *map)

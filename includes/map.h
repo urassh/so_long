@@ -28,7 +28,7 @@ typedef struct s_map
 t_map		*init_map(void);
 t_map		*load_map(const char *path);
 t_map		*duplicate_map(t_map *map);
-int			validate_map(t_map *map);
+int			validate_map(t_map *map, const char *path);
 void		free_map(t_map *map);
 
 # define MAX_WIDTH 100

@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_single_player.c                          :+:      :+:    :+:   */
+/*   validate_map_path.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/11 20:52:00 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/11 20:52:00 by urassh           ###   ########.fr       */
+/*   Created: 2025/10/03 14:29:49 by urassh            #+#    #+#             */
+/*   Updated: 2025/10/03 14:30:07 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map_validation.h"
 
-int	validate_map_single_player(t_map *map)
+int	validate_map_path(const char *path)
 {
-	int	i;
-	int	j;
-	int	player_count;
+	int		path_len;
+	char	*extension;
 
-	i = 0;
-	player_count = 0;
-	while (i < map->height)
+	if (!path)
 	{
-		j = 0;
-		while (map->grid[i][j])
-		{
-			if (map->grid[i][j] == PLAYER)
-				player_count++;
-			j++;
-		}
-		i++;
+		ft_putstr("Error: map path is null\n");
+		return (ERROR);
 	}
-	if (player_count == 1)
-		return (OK);
-	ft_putstr("Error: map data should be single player\n");
-	return (ERROR);
+	path_len = ft_strlen(path);
+	if (path_len < 4)
+	{
+		ft_putstr("Error: map path is too short\n");
+		return (ERROR);
+	}
+	extension = (char *)path + path_len - 4;
+	if (ft_strcmp(extension, ".ber") != 0)
+	{
+		ft_putstr("Error: map file must have .ber extension\n");
+		return (ERROR);
+	}
+	return (OK);
 }

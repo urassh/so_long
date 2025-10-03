@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   game_state.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: surayama <surayama@student.42.fr>          +#+  +:+       +#+        */
+/*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 00:00:00 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/29 15:23:21 by surayama         ###   ########.fr       */
+/*   Updated: 2025/10/03 14:37:23 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_state.h"
-#include "renderer.h"
 #include "mlx.h"
+#include "renderer.h"
 #include <stdlib.h>
 #include <sys/time.h>
 

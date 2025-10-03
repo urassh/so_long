@@ -44,6 +44,7 @@ SRCS = $(SRC_DIR)/main.c \
 	   $(SRC_DIR)/models/map/map_model.c \
 	   $(SRC_DIR)/models/map/map_loader.c \
 	   $(SRC_DIR)/models/map/map_validator.c \
+	   $(SRC_DIR)/models/map/validation/validate_map_path.c \
 	   $(SRC_DIR)/models/map/validation/validate_rectangular.c \
 	   $(SRC_DIR)/models/map/validation/validate_surrounded_by_walls.c \
 	   $(SRC_DIR)/models/map/validation/validate_single_player.c \
