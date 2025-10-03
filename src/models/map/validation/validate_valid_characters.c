@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "map_validation.h"
 
 int	validate_map_valid_characters(t_map *map)

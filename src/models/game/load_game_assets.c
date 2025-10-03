@@ -6,7 +6,7 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 00:01:12 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/24 22:13:46 by urassh           ###   ########.fr       */
+/*   Updated: 2025/10/03 14:34:28 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	load_game_assets(t_game_state *game, const char *map_path)
 	game->map = load_map(map_path);
 	if (!game->map)
 		return (ERROR);
-	if (validate_map(game->map) == ERROR)
+	if (validate_map(game->map, map_path) == ERROR)
 	{
 		free_map(game->map);
 		game->map = NULL;

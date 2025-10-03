@@ -35,9 +35,9 @@ int	validate_map_clearable(t_map *map)
 	}
 	flood_fill(duplicate, player_x, player_y);
 	result = check_collectibles_and_exit(map, duplicate);
+	free_map(duplicate);
 	if (result == ERROR)
 		return (error_clearable());
-	free_map(duplicate);
 	return (result);
 }
 

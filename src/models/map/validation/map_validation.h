@@ -6,16 +6,17 @@
 /*   By: urassh <urassh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 00:00:00 by urassh            #+#    #+#             */
-/*   Updated: 2025/09/15 00:00:00 by urassh           ###   ########.fr       */
+/*   Updated: 2025/10/03 14:29:40 by urassh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_VALIDATION_H
 # define MAP_VALIDATION_H
 
-# include "../../../../includes/map.h"
-# include "../../../../includes/libft.h"
+# include "libft.h"
+# include "map.h"
 
+int	validate_map_path(const char *path);
 int	validate_map_rectangular(t_map *map);
 int	validate_map_surrounded_by_walls(t_map *map);
 int	validate_map_single_player(t_map *map);
