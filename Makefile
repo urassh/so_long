@@ -6,8 +6,6 @@ SRC_DIR = src
 OBJ_DIR = obj
 MLX_DIR = minilibx
 
-HEADERS =
-
 CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -I$(INCLUDES_DIR) -I$(MLX_DIR)
 
@@ -91,7 +89,7 @@ $(NAME): $(MLX_DIR)/libmlx.a $(OBJS)
 	@cc $(CFLAGS) $(OBJS) $(LIBFLAGS) -o $(NAME)
 	@echo "$(GREEN)$(NAME) created successfully!$(NC)"
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS) | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	@mkdir -p $(dir $@)
 	@echo "$(YELLOW)Compiling $<...$(NC)"
 	@cc $(CFLAGS) $(INCLUDES) -c $< -o $@
